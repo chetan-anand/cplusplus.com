@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/unordered_multimap/key_eq/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:23:24 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>unordered_multimap::key_eq - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">STL Containers</a></li>
+<li><a href="../index.html">unordered_multimap</a></li>
+<li class="here">key_eq</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">public member type</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">unordered_multimap</a>::key_eq<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div id="I_file" title="header &lt;unordered_map&gt;">&lt;unordered_map&gt;</div>
+<div class="C_prototype"><pre>key_equal key_eq() const;</pre></div><div id="I_description">Get key equivalence predicate</div>
+<section id="description">
+Returns the key equivalence comparison predicate used by the <a href="http://www.cplusplus.com/unordered_multimap">unordered_multimap</a> container.<br>
+<br>
+The <dfn>key equivalence comparison</dfn> is a predicate that takes two arguments of the key type and returns a <tt>bool</tt> value indicating whether they are to be considered equivalent. It is adopted by the container on construction (see <a href="http://www.cplusplus.com/unordered_multimap::unordered_multimap">unordered_multimap's constructor</a> for more info). By default, it is <a href="http://www.cplusplus.com/equal_to">equal_to&lt;key_type&gt;</a>, which returns the same as applying the equal-to operator (<tt>==</tt>) to the arguments.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The key equality comparison object.<br>
+<br>
+Member type <tt>key_equal</tt> is the type of the key equality comparison predicate used by the container, defined in <a href="http://www.cplusplus.com/unordered_multimap">unordered_multimap</a> as an alias of its fourth template parameter (<tt>Pred</tt>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_multimap::key_eq</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_multimap&lt;std::string,std::string&gt; myumm;
+
+  <var>bool</var> case_insensitive = myumm.key_eq()(<kbd>"test"</kbd>,<kbd>"TEST"</kbd>);
+
+  std::cout &lt;&lt; <kbd>"myumm.key_eq() is "</kbd>;
+  std::cout &lt;&lt; ( case_insensitive ? <kbd>"case insensitive"</kbd> : <kbd>"case sensitive"</kbd> );
+  std::cout &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myumm.key_eq() is case sensitive
+</samp></pre></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../hash_function/index.html"><b>unordered_multimap::hash_function</b></a></dt><dd>Get hash function <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "../get_allocator/index.html"><b>unordered_multimap::get_allocator</b></a></dt><dd>Get allocator <span class="typ">(public member function)</span></dd></dl>
+</section>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">STL Containers</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../array/index.html"><span>array</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../bitset/index.html"><span>bitset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../deque/index.html"><span>deque</span></a></li>
+<li class="cpp11 folder"><a href="../../forward_list/index.html"><span>forward_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../list/index.html"><span>list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../map/index.html"><span>map</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../multimap/index.html"><span>multimap</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../multiset/index.html"><span>multiset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../priority_queue/index.html"><span>priority_queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../queue/index.html"><span>queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../set/index.html"><span>set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stack/index.html"><span>stack</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_map/index.html"><span>unordered_map</span></a></li>
+<li class="cpp11 selected folder"><a href="../index.html"><span>unordered_multimap</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_multiset/index.html"><span>unordered_multiset</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_set/index.html"><span>unordered_set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../vector/index.html"><span>vector</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp11">
+<h3><b><a href="../index.html">unordered_multimap</a></b></h3>
+<ul>
+<li class="cpp11"><a href="../unordered_multimap/index.html"><span>unordered_multimap::unordered_multimap</span></a></li>
+<li class="cpp11"><a href="../_unordered_multimap/index.html"><span>unordered_multimap::~unordered_multimap</span></a></li>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="cpp11"><a href="../begin/index.html"><span>unordered_multimap::begin</span></a></li>
+<li class="cpp11"><a href="../bucket/index.html"><span>unordered_multimap::bucket</span></a></li>
+<li class="cpp11"><a href="../bucket_count/index.html"><span>unordered_multimap::bucket_count</span></a></li>
+<li class="cpp11"><a href="../bucket_size/index.html"><span>unordered_multimap::bucket_size</span></a></li>
+<li class="cpp11"><a href="../cbegin/index.html"><span>unordered_multimap::cbegin</span></a></li>
+<li class="cpp11"><a href="../cend/index.html"><span>unordered_multimap::cend</span></a></li>
+<li class="cpp11"><a href="../clear/index.html"><span>unordered_multimap::clear</span></a></li>
+<li class="cpp11"><a href="../count/index.html"><span>unordered_multimap::count</span></a></li>
+<li class="cpp11"><a href="../emplace/index.html"><span>unordered_multimap::emplace</span></a></li>
+<li class="cpp11"><a href="../emplace_hint/index.html"><span>unordered_multimap::emplace_hint</span></a></li>
+<li class="cpp11"><a href="../empty/index.html"><span>unordered_multimap::empty</span></a></li>
+<li class="cpp11"><a href="../end/index.html"><span>unordered_multimap::end</span></a></li>
+<li class="cpp11"><a href="../equal_range/index.html"><span>unordered_multimap::equal_range</span></a></li>
+<li class="cpp11"><a href="../erase/index.html"><span>unordered_multimap::erase</span></a></li>
+<li class="cpp11"><a href="../find/index.html"><span>unordered_multimap::find</span></a></li>
+<li class="cpp11"><a href="../get_allocator/index.html"><span>unordered_multimap::get_allocator</span></a></li>
+<li class="cpp11"><a href="../hash_function/index.html"><span>unordered_multimap::hash_function</span></a></li>
+<li class="cpp11"><a href="../insert/index.html"><span>unordered_multimap::insert</span></a></li>
+<li class="cpp11 selected"><a href="index.html"><span>unordered_multimap::key_eq</span></a></li>
+<li class="cpp11"><a href="../load_factor/index.html"><span>unordered_multimap::load_factor</span></a></li>
+<li class="cpp11"><a href="../max_bucket_count/index.html"><span>unordered_multimap::max_bucket_count</span></a></li>
+<li class="cpp11"><a href="../max_load_factor/index.html"><span>unordered_multimap::max_load_factor</span></a></li>
+<li class="cpp11"><a href="../max_size/index.html"><span>unordered_multimap::max_size</span></a></li>
+<li class="cpp11"><a href="../operator%3d/index.html"><span>unordered_multimap::operator=</span></a></li>
+<li class="cpp11"><a href="../rehash/index.html"><span>unordered_multimap::rehash</span></a></li>
+<li class="cpp11"><a href="../reserve/index.html"><span>unordered_multimap::reserve</span></a></li>
+<li class="cpp11"><a href="../size/index.html"><span>unordered_multimap::size</span></a></li>
+<li class="cpp11"><a href="../swap/index.html"><span>unordered_multimap::swap</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>global functions:</h4><ul>
+<li class="cpp11"><a href="../operators/index.html"><span>operators (unordered_multimap)</span></a></li>
+<li class="cpp11"><a href="../swap(global)/index.html"><span>swap (unordered_multimap)</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstl%2Funordered_multimap%2Fkey_eq%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit6305.html?a=stl+unordered_multimap+key_eq'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete6305.html?a=stl+unordered_multimap+key_eq'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/unordered_multimap/key_eq/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:23:25 GMT -->
+</html>

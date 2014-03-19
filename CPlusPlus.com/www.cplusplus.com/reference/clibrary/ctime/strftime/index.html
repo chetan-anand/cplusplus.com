@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/clibrary/ctime/strftime/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:39:38 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>strftime - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">C Library</a></li>
+<li><a href="../index.html">ctime (time.h)</a></li>
+<li class="here">strftime</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">function</div>
+<h1>strftime</h1>
+<div id="I_file" title="header &lt;ctime&gt;">&lt;ctime&gt;</div>
+<div class="C_prototype"><pre>size_t strftime ( char * ptr, size_t maxsize, const char * format,                  const struct tm * timeptr );</pre></div><div id="I_description">Format time as string</div>
+Copies into <i>ptr</i> the content of <i>format</i>, expanding its format tags into the corresponding values as specified by <tt>timeptr</tt>, with a limit of <i>maxsize</i> characters.<br>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>ptr</dt>
+<dd>Pointer to the destination array where the resulting C string is copied.</dd>
+<dt>maxsize</dt>
+<dd>Maximum number of characters to be copied to <i>ptr</i>.</dd>
+<dt>format</dt>
+<dd>C string containing any combination of regular characters and special format specifiers. These format specifiers are replaced by the function to the corresponding values to represent the time specified in <i>timeptr</i>. They all begin with a percentage (<tt>%</tt>) sign, and are:<br>
+<table class="boxed">
+<tr><th>specifier</th><th>Replaced by</th><th>Example</th></tr>
+<tr><td><tt>%a</tt></td><td>Abbreviated weekday name *</td><td><tt>Thu</tt></td></tr>
+<tr><td><tt>%A</tt></td><td>Full weekday name * </td><td><tt>Thursday</tt></td></tr>
+<tr><td><tt>%b</tt></td><td>Abbreviated month name *</td><td><tt>Aug</tt></td></tr>
+<tr><td><tt>%B</tt></td><td>Full month name *</td><td><tt>August</tt></td></tr>
+<tr><td><tt>%c</tt></td><td>Date and time representation *</td><td><tt>Thu Aug 23 14:55:02 2001</tt></td></tr>
+<tr><td><tt>%d</tt></td><td>Day of the month (<tt>01-31</tt>)</td><td><tt>23</tt></td></tr>
+<tr><td><tt>%H</tt></td><td>Hour in 24h format (<tt>00-23</tt>)</td><td><tt>14</tt></td></tr>
+<tr><td><tt>%I</tt></td><td>Hour in 12h format (<tt>01-12</tt>)</td><td><tt>02</tt></td></tr>
+<tr><td><tt>%j</tt></td><td>Day of the year (<tt>001-366</tt>)</td><td><tt>235</tt></td></tr>
+<tr><td><tt>%m</tt></td><td>Month as a decimal number (<tt>01-12</tt>)</td><td><tt>08</tt></td></tr>
+<tr><td><tt>%M</tt></td><td>Minute (<tt>00-59</tt>)</td><td><tt>55</tt></td></tr>
+<tr><td><tt>%p</tt></td><td>AM or PM designation</td><td><tt>PM</tt></td></tr>
+<tr><td><tt>%S</tt></td><td>Second (<tt>00-61</tt>)</td><td><tt>02</tt></td></tr>
+<tr><td><tt>%U</tt></td><td>Week number with the first Sunday as the first day of week one (<tt>00-53</tt>)</td><td><tt>33</tt></td></tr>
+<tr><td><tt>%w</tt></td><td>Weekday as a decimal number with Sunday as <tt>0</tt> (<tt>0-6</tt>)</td><td><tt>4</tt></td></tr>
+<tr><td><tt>%W</tt></td><td>Week number with the first Monday as the first day of week one (<tt>00-53</tt>)</td><td><tt>34</tt></td></tr>
+<tr><td><tt>%x</tt></td><td>Date representation *</td><td><tt>08/23/01</tt></td></tr>
+<tr><td><tt>%X</tt></td><td>Time representation *</td><td><tt>14:55:02</tt></td></tr>
+<tr><td><tt>%y</tt></td><td>Year, last two digits (<tt>00-99</tt>)</td><td><tt>01</tt></td></tr>
+<tr><td><tt>%Y</tt></td><td>Year</td><td><tt>2001</tt></td></tr>
+<tr><td><tt>%Z</tt></td><td>Timezone name or abbreviation</td><td><tt>CDT</tt></td></tr>
+<tr><td><tt>%%</tt></td><td>A <tt>%</tt> sign</td><td><tt>%</tt></td></tr>
+</table>
+* The specifiers whose description is marked with an asterisk (*) are locale-dependent.<br>
+</dd>
+<dt>timeptr</dt>
+<dd>Pointer to a <a href="http://www.cplusplus.com/tm">tm</a> structure that contains a calendar time broken down into its components (see <a href="http://www.cplusplus.com/tm">tm</a>).</dd>
+</dl>
+<br>
+<h3>Return Value</h3>
+If the resulting C string fits in less than <i>maxsize</i> characters including the terminating null-character, the total number of characters copied to <i>ptr</i> (not including the terminating null-character) is returned.<br>
+Otherwise, zero is returned and the contents of the array are indeterminate.<br>
+<br>
+<h3>Portability</h3>
+This description corresponds to the C++ version of this function (which is the same as in the ISO-C Standard of 1990). C compilers may support additional specifiers and modifiers for the <i>format</i> parameter of this function, which are not described here.<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strftime example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;time.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  time_t rawtime;
+  <var>struct</var> tm * timeinfo;
+  <var>char</var> buffer [80];
+
+  time ( &amp;rawtime );
+  timeinfo = localtime ( &amp;rawtime );
+
+  strftime (buffer,80,<kbd>"Now it's %I:%M%p."</kbd>,timeinfo);
+  puts (buffer);
+  
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Example output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Now it's 03:21PM.
+</samp></pre></td></tr></table></div>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../ctime/index.html"><b>ctime</b></a></dt><dd>Convert time_t value to string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "../asctime/index.html"><b>asctime</b></a></dt><dd>Convert tm structure to string <span class="typ">(function)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">C Library</a></b></h3>
+<ul>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cassert/index.html"><span>cassert (assert.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cctype/index.html"><span>cctype (ctype.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cerrno/index.html"><span>cerrno (errno.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cfloat/index.html"><span>cfloat (float.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../ciso646/index.html"><span>ciso646 (iso646.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../climits/index.html"><span>climits (limits.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../clocale/index.html"><span>clocale (locale.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cmath/index.html"><span>cmath (math.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../csetjmp/index.html"><span>csetjmp (setjmp.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../csignal/index.html"><span>csignal (signal.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstdarg/index.html"><span>cstdarg (stdarg.h)</span></a></li>
+<li class="cpp11 folder"><a href="../../cstdbool/index.html"><span>cstdbool (stdbool.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstddef/index.html"><span>cstddef (stddef.h)</span></a></li>
+<li class="c99 cpp11 folder"><a href="../../cstdint/index.html"><span>cstdint (stdint.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstdio/index.html"><span>cstdio (stdio.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstdlib/index.html"><span>cstdlib (stdlib.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstring/index.html"><span>cstring (string.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 selected folder"><a href="../index.html"><span>ctime (time.h)</span></a></li>
+<li class="c99 cpp11 folder"><a href="../../cwchar/index.html"><span>cwchar (wchar.h)</span></a></li>
+<li class="c99 cpp11 folder"><a href="../../cwctype/index.html"><span>cwctype (wctype.h)</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect c90 c99 arm cpp98 cpp11">
+<h3><b><a href="../index.html">ctime (time.h)</a></b></h3>
+<ul>
+<li class="C_Collapsable"><h4>functions:</h4><ul>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../asctime/index.html"><span>asctime</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../clock/index.html"><span>clock</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../ctime/index.html"><span>ctime</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../difftime/index.html"><span>difftime</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../gmtime/index.html"><span>gmtime</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../localtime/index.html"><span>localtime</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../mktime/index.html"><span>mktime</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 selected"><a href="index.html"><span>strftime</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../time/index.html"><span>time</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>macros:</h4><ul>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../CLOCKS_PER_SEC/index.html"><span>CLOCKS_PER_SEC</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../NULL/index.html"><span>NULL</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>types:</h4><ul>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../clock_t/index.html"><span>clock_t</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../size_t/index.html"><span>size_t</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../time_t/index.html"><span>time_t</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../tm/index.html"><span>struct tm</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fclibrary%2Fctime%2Fstrftime%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../editd5c5-2.html?a=clibrary+ctime+strftime'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../deleted5c5-2.html?a=clibrary+ctime+strftime'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/clibrary/ctime/strftime/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:39:39 GMT -->
+</html>

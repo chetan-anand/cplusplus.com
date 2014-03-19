@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/multiset/lower_bound/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:52:27 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>multiset::lower_bound - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">STL Containers</a></li>
+<li><a href="../index.html">multiset</a></li>
+<li class="here">lower_bound</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">public member function</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">multiset</a>::lower_bound</h1>
+<div id="I_file" title="header &lt;set&gt;">&lt;set&gt;</div>
+<div class="C_prototype"><pre>iterator lower_bound ( const key_type&amp; x ) const;</pre></div><div id="I_description">Return iterator to lower bound</div>
+Returns an iterator pointing to the first element in the container which does not compare less than <i>x</i> (using the container's comparison object), i.e. it is either equal or greater.<br>
+<br>
+Unlike <a href="http://www.cplusplus.com/multiset::upper_bound">upper_bound</a>, this member function returns an iterator to the element also if it compares equal to <i>x</i> and not only if it compares greater.<br>
+<br>
+Notice that, internally, all the elements in a <a href="http://www.cplusplus.com/multiset">multiset</a> container are always ordered following the criterion defined by its <i>comparison object</i>, therefore all the elements that follow the one returned by this function will also compare greater than or equal to <i>x</i>.<br>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Key value to be compared.<br>
+<tt>key_type</tt> is a member type defined in <a href="http://www.cplusplus.com/multiset">multiset</a> containers as an alias of <tt>Key</tt>, which is the first template parameter and the type of the elements stored in the container.</dd>
+</dl>
+<br>
+<h3>Return value</h3>
+An iterator to the the first element in the container which does not compare less than <i>x</i>.<br>
+<tt>iterator</tt> is a member type, defined in <a href="http://www.cplusplus.com/multiset">multiset</a> as a <i>bidirectional iterator</i> type.<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// multiset::lower_bound/upper_bound</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;set&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>int</var> main ()
+{
+  multiset&lt;<var>int</var>&gt; mymultiset;
+  multiset&lt;<var>int</var>&gt;::iterator it,itlow,itup;
+
+  <var>for</var> (<var>int</var> i=1; i&lt;8; i++) mymultiset.insert(i*10); <cite>// 10 20 30 40 50 60 70</cite>
+
+  itlow=mymultiset.lower_bound (30);               <cite>//       ^</cite>
+  itup=mymultiset.upper_bound (40);                <cite>//             ^</cite>
+
+  mymultiset.erase(itlow,itup);                    <cite>// 10 20 50 60 70</cite>
+
+  cout &lt;&lt; <kbd>"mymultiset contains:"</kbd>;
+  <var>for</var> (it=mymultiset.begin(); it!=mymultiset.end(); it++)
+    cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; *it;
+  cout &lt;&lt; endl;
+
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Notice that <tt>lower_bound(30)</tt> returns an iterator to <tt>30</tt>, whereas <tt>upper_bound(40)</tt> returns an iterator to <tt>50</tt>.<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mymultiset contains: 10 20 50 60 70
+</samp></pre></td></tr></table></div>
+<br>
+<h3>Complexity</h3>
+Logarithmic in <a href="http://www.cplusplus.com/multiset::size">size</a>.<br>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../upper_bound/index.html"><b>multiset::upper_bound</b></a></dt><dd>Return iterator to upper bound <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../equal_range/index.html"><b>multiset::equal_range</b></a></dt><dd>Get range of equal elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../find/index.html"><b>multiset::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../count/index.html"><b>multiset::count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">STL Containers</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../array/index.html"><span>array</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../bitset/index.html"><span>bitset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../deque/index.html"><span>deque</span></a></li>
+<li class="cpp11 folder"><a href="../../forward_list/index.html"><span>forward_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../list/index.html"><span>list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../map/index.html"><span>map</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../multimap/index.html"><span>multimap</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>multiset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../priority_queue/index.html"><span>priority_queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../queue/index.html"><span>queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../set/index.html"><span>set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stack/index.html"><span>stack</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_map/index.html"><span>unordered_map</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_multimap/index.html"><span>unordered_multimap</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_multiset/index.html"><span>unordered_multiset</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_set/index.html"><span>unordered_set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../vector/index.html"><span>vector</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">multiset</a></b></h3>
+<ul>
+<li class="cpp98 cpp11"><a href="../operators/index.html"><span>comparison operators</span></a></li>
+<li class="cpp98 cpp11"><a href="../multiset/index.html"><span>multiset::multiset</span></a></li>
+<li class="cpp98 cpp11"><a href="../_multiset/index.html"><span>multiset::~multiset</span></a></li>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="cpp98 cpp11"><a href="../begin/index.html"><span>multiset::begin</span></a></li>
+<li class="cpp98 cpp11"><a href="../clear/index.html"><span>multiset::clear</span></a></li>
+<li class="cpp98 cpp11"><a href="../count/index.html"><span>multiset::count</span></a></li>
+<li class="cpp98 cpp11"><a href="../empty/index.html"><span>multiset::empty</span></a></li>
+<li class="cpp98 cpp11"><a href="../end/index.html"><span>multiset::end</span></a></li>
+<li class="cpp98 cpp11"><a href="../equal_range/index.html"><span>multiset::equal_range</span></a></li>
+<li class="cpp98 cpp11"><a href="../erase/index.html"><span>multiset::erase</span></a></li>
+<li class="cpp98 cpp11"><a href="../find/index.html"><span>multiset::find</span></a></li>
+<li class="cpp98 cpp11"><a href="../get_allocator/index.html"><span>multiset::get_allocator</span></a></li>
+<li class="cpp98 cpp11"><a href="../insert/index.html"><span>multiset::insert</span></a></li>
+<li class="cpp98 cpp11"><a href="../key_comp/index.html"><span>multiset::key_comp</span></a></li>
+<li class="cpp98 cpp11 selected"><a href="index.html"><span>multiset::lower_bound</span></a></li>
+<li class="cpp98 cpp11"><a href="../max_size/index.html"><span>multiset::max_size</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%3d/index.html"><span>multiset::operator=</span></a></li>
+<li class="cpp98 cpp11"><a href="../rbegin/index.html"><span>multiset::rbegin</span></a></li>
+<li class="cpp98 cpp11"><a href="../rend/index.html"><span>multiset::rend</span></a></li>
+<li class="cpp98 cpp11"><a href="../size/index.html"><span>multiset::size</span></a></li>
+<li class="cpp98 cpp11"><a href="../swap/index.html"><span>multiset::swap</span></a></li>
+<li class="cpp98 cpp11"><a href="../upper_bound/index.html"><span>multiset::upper_bound</span></a></li>
+<li class="cpp98 cpp11"><a href="../value_comp/index.html"><span>multiset::value_comp</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstl%2Fmultiset%2Flower_bound%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit7777.html?a=stl+multiset+lower_bound'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete7777.html?a=stl+multiset+lower_bound'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/multiset/lower_bound/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:52:28 GMT -->
+</html>

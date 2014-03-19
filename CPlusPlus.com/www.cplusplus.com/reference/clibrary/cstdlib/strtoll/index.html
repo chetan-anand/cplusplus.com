@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/clibrary/cstdlib/strtoll/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:37:47 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>strtoll - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">C Library</a></li>
+<li><a href="../index.html">cstdlib (stdlib.h)</a></li>
+<li class="here">strtoll</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">function</div>
+<h1>strtoll<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div id="I_file" title="header &lt;cstdlib&gt;">&lt;cstdlib&gt;</div>
+<div class="C_prototype"><pre>long long int strtoll ( const char * str, char ** endptr, int base );</pre></div><div id="I_description">Convert string to long long integer</div>
+<section id="description">
+Parses the C string <i>str</i> interpreting its content as an integral number of the specified <i>base</i>, which is returned as a <tt>long long int</tt> value. If <i>endptr</i> is not a null pointer, the function also sets the value of <i>endptr</i> to point to the first character after the number.<br>
+<br>
+This function operates like <a href="http://www.cplusplus.com/strtol">strtol</a> to interpret the string, but produces numbers of type <tt>long long int</tt> (see <a href="http://www.cplusplus.com/strtol">strtol</a> for details on the interpretation process).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>C string beginning with the representation of an integral number.</dd>
+<dt>endptr</dt>
+<dd>Reference to an object of type <tt>char*</tt>, whose value is set by the function to the next character in <i>str</i> after the numerical value.<br>
+This parameter can also be a null pointer, in which case it is not used.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the converted integral number as a <tt>long int</tt> value.<br>
+If no valid conversion could be performed, a zero value is returned (<tt>0LL</tt>).<br>
+If the value read is out of the range of representable values by a <tt>long long int</tt>, the function returns <tt>LLONG_MAX</tt> or <tt>LLONG_MIN</tt> (defined in <a href="http://www.cplusplus.com/climits">&lt;climits&gt;</a>), and <a href="http://www.cplusplus.com/errno">errno</a> is set to <tt>ERANGE</tt>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strtoll example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;stdlib.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> szNumbers[] = <kbd>"1856892505 17b00a12b -01100011010110000010001101100 0x6fffff"</kbd>;
+  <var>char</var> * pEnd;
+  <var>long</var> <var>long</var> <var>int</var> lli1, lli2, lli3, lli4;
+  lli1 = strtoll (szNumbers,&amp;pEnd,10);
+  lli2 = strtoll (pEnd,&amp;pEnd,16);
+  lli3 = strtoll (pEnd,&amp;pEnd,2);
+  lli4 = strtoll (pEnd,NULL,0);
+  printf (<kbd>"The decimal equivalents are: %lld, %lld, %lld and %lld.\n"</kbd>, lli1, lli2, lli3, lli4);
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+The decimal equivalents are: 1856892505, 6358606123, -208340076 and 7340031
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../strtol/index.html"><b>strtol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "../atol/index.html"><b>atol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "../strtoull/index.html"><b>strtoull</b></a></dt><dd>Convert string to unsigned long long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "../strtod/index.html"><b>strtod</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl>
+</section></div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">C Library</a></b></h3>
+<ul>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cassert/index.html"><span>cassert (assert.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cctype/index.html"><span>cctype (ctype.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cerrno/index.html"><span>cerrno (errno.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cfloat/index.html"><span>cfloat (float.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../ciso646/index.html"><span>ciso646 (iso646.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../climits/index.html"><span>climits (limits.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../clocale/index.html"><span>clocale (locale.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cmath/index.html"><span>cmath (math.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../csetjmp/index.html"><span>csetjmp (setjmp.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../csignal/index.html"><span>csignal (signal.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstdarg/index.html"><span>cstdarg (stdarg.h)</span></a></li>
+<li class="cpp11 folder"><a href="../../cstdbool/index.html"><span>cstdbool (stdbool.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstddef/index.html"><span>cstddef (stddef.h)</span></a></li>
+<li class="c99 cpp11 folder"><a href="../../cstdint/index.html"><span>cstdint (stdint.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstdio/index.html"><span>cstdio (stdio.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 selected folder"><a href="../index.html"><span>cstdlib (stdlib.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../cstring/index.html"><span>cstring (string.h)</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11 folder"><a href="../../ctime/index.html"><span>ctime (time.h)</span></a></li>
+<li class="c99 cpp11 folder"><a href="../../cwchar/index.html"><span>cwchar (wchar.h)</span></a></li>
+<li class="c99 cpp11 folder"><a href="../../cwctype/index.html"><span>cwctype (wctype.h)</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect c90 c99 arm cpp98 cpp11">
+<h3><b><a href="../index.html">cstdlib (stdlib.h)</a></b></h3>
+<ul>
+<li class="C_Collapsable"><h4>functions:</h4><ul>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../abort/index.html"><span>abort</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../abs/index.html"><span>abs</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../atexit/index.html"><span>atexit</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../atof/index.html"><span>atof</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../atoi/index.html"><span>atoi</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../atol/index.html"><span>atol</span></a></li>
+<li class="c99 cpp11"><a href="../atoll/index.html"><span>atoll</span></a></li>
+<li class="c11 cpp11"><a href="../at_quick_exit/index.html"><span>at_quick_exit</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../bsearch/index.html"><span>bsearch</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../calloc/index.html"><span>calloc</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../div/index.html"><span>div</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../exit/index.html"><span>exit</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../free/index.html"><span>free</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../getenv/index.html"><span>getenv</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../labs/index.html"><span>labs</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../ldiv/index.html"><span>ldiv</span></a></li>
+<li class="c99 cpp11"><a href="../llabs/index.html"><span>llabs</span></a></li>
+<li class="c99 cpp11"><a href="../lldiv/index.html"><span>lldiv</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../malloc/index.html"><span>malloc</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../mblen/index.html"><span>mblen</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../mbstowcs/index.html"><span>mbstowcs</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../mbtowc/index.html"><span>mbtowc</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../qsort/index.html"><span>qsort</span></a></li>
+<li class="c11 cpp11"><a href="../quick_exit/index.html"><span>quick_exit</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../rand/index.html"><span>rand</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../realloc/index.html"><span>realloc</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../srand/index.html"><span>srand</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../strtod/index.html"><span>strtod</span></a></li>
+<li class="c99 cpp11"><a href="../strtof/index.html"><span>strtof</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../strtol/index.html"><span>strtol</span></a></li>
+<li class="c99 cpp11"><a href="../strtold/index.html"><span>strtold</span></a></li>
+<li class="c99 cpp11 selected"><a href="index.html"><span>strtoll</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../strtoul/index.html"><span>strtoul</span></a></li>
+<li class="c99 cpp11"><a href="../strtoull/index.html"><span>strtoull</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../system/index.html"><span>system</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../wcstombs/index.html"><span>wcstombs</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../wctomb/index.html"><span>wctomb</span></a></li>
+<li class="c99 cpp11"><a href="../_Exit/index.html"><span>_Exit</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>functions (non-standard):</h4><ul>
+<li class="arm"><a href="../itoa/index.html"><span>itoa</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>types:</h4><ul>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../div_t/index.html"><span>div_t</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../ldiv_t/index.html"><span>ldiv_t</span></a></li>
+<li class="c99 cpp11"><a href="../lldiv_t/index.html"><span>lldiv_t</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../size_t/index.html"><span>size_t</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>macro constants:</h4><ul>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../EXIT_FAILURE/index.html"><span>EXIT_FAILURE</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../EXIT_SUCCESS/index.html"><span>EXIT_SUCCESS</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../MB_CUR_MAX/index.html"><span>MB_CUR_MAX</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../NULL/index.html"><span>NULL</span></a></li>
+<li class="c90 c99 arm cpp98 cpp11"><a href="../RAND_MAX/index.html"><span>RAND_MAX</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fclibrary%2Fcstdlib%2Fstrtoll%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../editf242.html?a=clibrary+cstdlib+strtoll'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../deletef242.html?a=clibrary+cstdlib+strtoll'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/clibrary/cstdlib/strtoll/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:37:49 GMT -->
+</html>

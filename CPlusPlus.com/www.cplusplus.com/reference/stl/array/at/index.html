@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/array/at/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:20:40 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>array::at - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">STL Containers</a></li>
+<li><a href="../index.html">array</a></li>
+<li class="here">at</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">public member function</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">array</a>::at<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div id="I_file" title="header &lt;array&gt;">&lt;array&gt;</div>
+<div class="C_prototype"><pre>      reference at ( size_type n );const_reference at ( size_type n ) const;</pre></div><div id="I_description">Access element</div>
+<section id="description">
+Returns a reference to the element at position <i>n</i> in the <a href="http://www.cplusplus.com/array">array</a>.<br>
+<br>
+The difference between this member function and member operator function <tt>operator[]</tt> is that <tt>array::at</tt> checks the array bounds and signals whether the requested position is out of range by throwing an <a href="http://www.cplusplus.com/out_of_range">out_of_range</a> exception.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>Position of an element in the array.<br>
+If this is greater than or equal to the vector <a href="http://www.cplusplus.com/vector::size">size</a>, an exception of type <a href="http://www.cplusplus.com/out_of_range">out_of_range</a> is thrown.<br>
+Notice that the first element has a position of <tt>0</tt>, not <tt>1</tt>.<br>
+Member type <tt>size_type</tt> is an alias of the unsigned integral type <a href="http://www.cplusplus.com/size_t">size_t</a>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The element at the specified position in the array.<br>
+<br>
+Member types <tt>reference</tt> and <tt>const_reference</tt> are the reference types to elements of the <a href="http://www.cplusplus.com/array">array</a> container.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br></code></pre></td>
+<td class="source"><pre><code><cite>// array::at</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;array&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>unsigned</var> <var>int</var> i;
+  std::array&lt;<var>int</var>,10&gt; myarray;
+
+  <cite>// assign some values:</cite>
+  <var>for</var> (i=0; i&lt;10; i++) myarray.at(i) = i+1;
+
+  <cite>// print content</cite>
+  std::cout &lt;&lt; <kbd>"myarray contains:"</kbd>;
+  <var>for</var> (i=0; i&lt;10; i++)
+    std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; myarray.at(i);
+
+  std::cout &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myarray contains: 1 2 3 4 5 6 7 8 9 10
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../operator%5b%5d/index.html"><b>array::operator[]</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../front/index.html"><b>array::front</b></a></dt><dd>Access first element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../back/index.html"><b>array::back</b></a></dt><dd>Access last element <span class="typ">(public member function)</span></dd></dl>
+</section></div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">STL Containers</a></b></h3>
+<ul>
+<li class="cpp11 selected folder"><a href="../index.html"><span>array</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../bitset/index.html"><span>bitset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../deque/index.html"><span>deque</span></a></li>
+<li class="cpp11 folder"><a href="../../forward_list/index.html"><span>forward_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../list/index.html"><span>list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../map/index.html"><span>map</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../multimap/index.html"><span>multimap</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../multiset/index.html"><span>multiset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../priority_queue/index.html"><span>priority_queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../queue/index.html"><span>queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../set/index.html"><span>set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stack/index.html"><span>stack</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_map/index.html"><span>unordered_map</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_multimap/index.html"><span>unordered_multimap</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_multiset/index.html"><span>unordered_multiset</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_set/index.html"><span>unordered_set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../vector/index.html"><span>vector</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp11">
+<h3><b><a href="../index.html">array</a></b></h3>
+<ul>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="cpp11 selected"><a href="index.html"><span>array::at</span></a></li>
+<li class="cpp11"><a href="../back/index.html"><span>array::back</span></a></li>
+<li class="cpp11"><a href="../begin/index.html"><span>array::begin</span></a></li>
+<li class="cpp11"><a href="../cbegin/index.html"><span>array::cbegin</span></a></li>
+<li class="cpp11"><a href="../cend/index.html"><span>array::cend</span></a></li>
+<li class="cpp11"><a href="../crbegin/index.html"><span>array::crbegin</span></a></li>
+<li class="cpp11"><a href="../crend/index.html"><span>array::crend</span></a></li>
+<li class="cpp11"><a href="../data/index.html"><span>array::data</span></a></li>
+<li class="cpp11"><a href="../empty/index.html"><span>array::empty</span></a></li>
+<li class="cpp11"><a href="../end/index.html"><span>array::end</span></a></li>
+<li class="cpp11"><a href="../fill/index.html"><span>array::fill</span></a></li>
+<li class="cpp11"><a href="../front/index.html"><span>array::front</span></a></li>
+<li class="cpp11"><a href="../max_size/index.html"><span>array::max_size</span></a></li>
+<li class="cpp11"><a href="../operator%5b%5d/index.html"><span>array::operator[]</span></a></li>
+<li class="cpp11"><a href="../rbegin/index.html"><span>array::rbegin</span></a></li>
+<li class="cpp11"><a href="../rend/index.html"><span>array::rend</span></a></li>
+<li class="cpp11"><a href="../size/index.html"><span>array::size</span></a></li>
+<li class="cpp11"><a href="../swap/index.html"><span>array::swap</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>global functions:</h4><ul>
+<li class="cpp11"><a href="../get/index.html"><span>get (array)</span></a></li>
+<li class="cpp11"><a href="../operators/index.html"><span>operators (array)</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstl%2Farray%2Fat%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit2c9c.html?a=stl+array+at'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete2c9c.html?a=stl+array+at'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/array/at/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:20:42 GMT -->
+</html>

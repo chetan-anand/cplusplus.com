@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/numeric/inner_product/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:58:11 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>inner_product - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">Miscellaneous</a></li>
+<li><a href="../index.html">numeric</a></li>
+<li class="here">inner_product</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">function template</div>
+<h1><span class="namespace" title="namespace std">std::</span>inner_product</h1>
+<div id="I_file" title="header &lt;numeric&gt;">&lt;numeric&gt;</div>
+<div class="C_prototype"><pre>template &lt;class InputIterator1, class InputIterator2, class T&gt;   T inner_product ( InputIterator1 first1, InputIterator1 last1,                     InputIterator2 first2, T init );template &lt;class InputIterator1, class InputIterator2, class T,          class BinaryOperation1, class BinaryOperation2&gt;   T inner_product ( InputIterator1 first1, InputIterator1 last1,                     InputIterator2 first2, T init,                     BinaryOperation1 binary_op1,                     BinaryOperation2 binary_op2 );</pre></div><div id="I_description">Compute cumulative inner product of range</div>
+Returns the result of accumulating <i>init</i> with the inner products of the <br>
+pairs formed by the elements of two ranges starting at <i>first1</i> and <i>first2</i>.<br>
+<br>
+The two default operations (to <i>add up</i> the result of <i>multiplying</i> the pairs) may be overridden by parameters <i>binary_op1</i> and <i>binary_op2</i>.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> InputIterator1, <var>class</var> InputIterator2, <var>class</var> T&gt;
+   T inner_product ( InputIterator1 first1, InputIterator1 last1,
+                     InputIterator2 first2, T init )
+{
+  <var>while</var> (first1!=last1)
+    init = init + (*first1++)*(*first2++);
+               <cite>// or: init=binary_op1(init,binary_op2(*first1++,*first2++))</cite>
+               <cite>// for the binary_op's version</cite>
+  <var>return</var> init;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>first1, last1</dt>
+<dd>Input iterators to the initial and final positions in the first sequence. The range used is <tt>[first1,last1)</tt>, which contains all the elements between <i>first1</i> and <i>last1</i>, including the element pointed by <i>first1</i> but not the element pointed by <i>last1</i>.</dd>
+<dt>first2</dt>
+<dd>Input iterator to the initial position in the second sequence. The range starts at <i>first2</i> and has as many elements as the range above (<tt>[first1,last1)</tt>).</dd>
+<dt>init</dt>
+<dd>Initial value for the accumulator.</dd>
+<dt>binary_op1</dt>
+<dd>Binary operation taking two elements of type <tt>T</tt> as argument, and returning the result of an accumulation operation. This can either be a pointer to a function or an object whose class overloads <tt>operator()</tt>.</dd>
+<dt>binary_op2</dt>
+<dd>Binary operation taking two elements of type <tt>T</tt> as argument, and returning the result of the inner product operation. This can either be a pointer to a function or an object whose class overloads <tt>operator()</tt>.</dd>
+</dl>
+<br>
+<h3>Return value</h3>
+The result of accumulating <i>init</i> and the products of all the pairs of elements in the ranges starting at <i>first1</i> and <i>first2</i>.<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br></code></pre></td>
+<td class="source"><pre><code><cite>// inner_product example</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;functional&gt;</dfn>
+<dfn>#include &lt;numeric&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>int</var> myaccumulator (<var>int</var> x, <var>int</var> y) {<var>return</var> x-y;}
+<var>int</var> myproduct (<var>int</var> x, <var>int</var> y) {<var>return</var> x+y;}
+
+<var>int</var> main () {
+  <var>int</var> init = 100;
+  <var>int</var> series1[] = {10,20,30};
+  <var>int</var> series2[] = {1,2,3};
+
+  cout &lt;&lt; <kbd>"using default inner_product: "</kbd>;
+  cout &lt;&lt; inner_product(series1,series1+3,series2,init);
+  cout &lt;&lt; endl;
+
+  cout &lt;&lt; <kbd>"using functional operations: "</kbd>;
+  cout &lt;&lt; inner_product(series1,series1+3,series2,init,minus&lt;<var>int</var>&gt;(),divides&lt;<var>int</var>&gt;());
+  cout &lt;&lt; endl;
+
+  cout &lt;&lt; <kbd>"using custom functions: "</kbd>;
+  cout &lt;&lt; inner_product(series1,series1+3,series2,init,myaccumulator,myproduct);
+  cout &lt;&lt; endl;
+
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+using default inner_product: 240
+using functional operations: 70
+using custom functions: 34
+</samp></pre></td></tr></table></div>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../accumulate/index.html"><b>accumulate</b></a></dt><dd>Accumulate values in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "../partial_sum/index.html"><b>partial_sum</b></a></dt><dd>Compute partial sums of range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "../adjacent_difference/index.html"><b>adjacent_difference</b></a></dt><dd>Compute adjacent difference of range <span class="typ">(function template)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">Miscellaneous</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../chrono/index.html"><span>chrono</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../complex/index.html"><span>complex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../exception/index.html"><span>exception</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../functional/index.html"><span>functional</span></a></li>
+<li class="cpp11 folder"><a href="../../initializer_list/index.html"><span>initializer_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../iterator/index.html"><span>iterator</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../limits/index.html"><span>limits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../locale/index.html"><span>locale</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../memory/index.html"><span>memory</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../new/index.html"><span>new</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>numeric</span></a></li>
+<li class="cpp11 folder"><a href="../../random/index.html"><span>random</span></a></li>
+<li class="cpp11 folder"><a href="../../ratio/index.html"><span>ratio</span></a></li>
+<li class="cpp11 folder"><a href="../../regex/index.html"><span>regex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stdexcept/index.html"><span>stdexcept</span></a></li>
+<li class="cpp11 folder"><a href="../../system_error/index.html"><span>system_error</span></a></li>
+<li class="cpp11 folder"><a href="../../tuple/index.html"><span>tuple</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../typeinfo/index.html"><span>typeinfo</span></a></li>
+<li class="cpp11 folder"><a href="../../type_traits/index.html"><span>type_traits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../utility/index.html"><span>utility</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../valarray/index.html"><span>valarray</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">numeric</a></b></h3>
+<ul>
+<li class="cpp98 cpp11"><a href="../accumulate/index.html"><span>accumulate</span></a></li>
+<li class="cpp98 cpp11"><a href="../adjacent_difference/index.html"><span>adjacent_difference</span></a></li>
+<li class="cpp98 cpp11 selected"><a href="index.html"><span>inner_product</span></a></li>
+<li class="cpp98 cpp11"><a href="../partial_sum/index.html"><span>partial_sum</span></a></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstd%2Fnumeric%2Finner_product%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit4248.html?a=std+numeric+inner_product'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete4248.html?a=std+numeric+inner_product'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/numeric/inner_product/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:58:13 GMT -->
+</html>

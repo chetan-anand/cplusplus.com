@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/complex/abs/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:56:57 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>abs - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">Miscellaneous</a></li>
+<li><a href="../index.html">complex</a></li>
+<li class="here">abs</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">function template</div>
+<h1><span class="namespace" title="namespace std">std::</span>abs</h1>
+<div id="I_file" title="header &lt;complex&gt;">&lt;complex&gt;</div>
+<div class="C_prototype"><pre>template&lt;class T&gt; T abs (const complex&lt;T&gt;&amp; x);</pre></div><div id="I_description">Return absolute value of complex</div>
+Returns the absolute value of the complex number <i>x</i>.<br>
+<br>
+The absolute value of a complex number is its magnitude (or modulus), defined as the theoretical distance between the coordinates <tt>(</tt><i>real</i><tt>,</tt><i>imag</i><tt>)</tt> of <i>x</i> and <tt>(0,0)</tt> (apply pythagorean theorem).<br>
+<br>
+This function is overloaded in <a href="http://www.cplusplus.com/cstdlib">&lt;cstdlib&gt;</a> for integral types (see <a href="http://www.cplusplus.com/abs">cstdlib abs</a>), in <a href="http://www.cplusplus.com/cmath">&lt;cmath&gt;</a> for floating-point types (see <a href="http://www.cplusplus.com/cmath:abs">cmath abs</a>), and in <a href="http://www.cplusplus.com/valarray">&lt;valarray&gt;</a> for valarrays (see <a href="http://www.cplusplus.com/valarray:abs">valarray abs</a>).<br>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Complex value.</dd>
+</dl>
+<br>
+<h3>Return value</h3>
+Absolute value of <i>x</i>.<br>
+<tt>T</tt> is <i>x</i>'s <a href="http://www.cplusplus.com/complex">complex</a> template type (i.e., its value type).<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>// abs complex example</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;complex&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>int</var> main ()
+{
+  complex&lt;<var>double</var>&gt; mycomplex (3.0,4.0);
+
+  cout &lt;&lt; <kbd>"The absolute value of "</kbd> &lt;&lt; mycomplex &lt;&lt; <kbd>" is "</kbd> &lt;&lt; abs(mycomplex) &lt;&lt; endl;
+
+  <var>return</var> 0;
+} </code></pre></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+The absolute value of (3,4) is 5
+</samp></pre></td></tr></table></div>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../arg/index.html"><b>arg</b></a></dt><dd>Return phase angle of complex <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "../polar/index.html"><b>polar</b></a></dt><dd>Return complex from polar components <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "../../../clibrary/cstdlib/abs/index.html"><b>abs (cstdlib)</b></a></dt><dd>Absolute value <span class="typ">(function)</span></dd></dl></div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">Miscellaneous</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../chrono/index.html"><span>chrono</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>complex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../exception/index.html"><span>exception</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../functional/index.html"><span>functional</span></a></li>
+<li class="cpp11 folder"><a href="../../initializer_list/index.html"><span>initializer_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../iterator/index.html"><span>iterator</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../limits/index.html"><span>limits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../locale/index.html"><span>locale</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../memory/index.html"><span>memory</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../new/index.html"><span>new</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../numeric/index.html"><span>numeric</span></a></li>
+<li class="cpp11 folder"><a href="../../random/index.html"><span>random</span></a></li>
+<li class="cpp11 folder"><a href="../../ratio/index.html"><span>ratio</span></a></li>
+<li class="cpp11 folder"><a href="../../regex/index.html"><span>regex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stdexcept/index.html"><span>stdexcept</span></a></li>
+<li class="cpp11 folder"><a href="../../system_error/index.html"><span>system_error</span></a></li>
+<li class="cpp11 folder"><a href="../../tuple/index.html"><span>tuple</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../typeinfo/index.html"><span>typeinfo</span></a></li>
+<li class="cpp11 folder"><a href="../../type_traits/index.html"><span>type_traits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../utility/index.html"><span>utility</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../valarray/index.html"><span>valarray</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">complex</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 selected"><a href="index.html"><span>abs</span></a></li>
+<li class="cpp98 cpp11"><a href="../arg/index.html"><span>arg</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../complex/index.html"><span>complex</span></a></li>
+<li class="cpp98 cpp11"><a href="../conj/index.html"><span>conj</span></a></li>
+<li class="cpp98 cpp11"><a href="../cos/index.html"><span>cos</span></a></li>
+<li class="cpp98 cpp11"><a href="../cosh/index.html"><span>cosh</span></a></li>
+<li class="cpp98 cpp11"><a href="../exp/index.html"><span>exp</span></a></li>
+<li class="cpp98 cpp11"><a href="../imag/index.html"><span>imag</span></a></li>
+<li class="cpp98 cpp11"><a href="../log/index.html"><span>log</span></a></li>
+<li class="cpp98 cpp11"><a href="../log10/index.html"><span>log10</span></a></li>
+<li class="cpp98 cpp11"><a href="../norm/index.html"><span>norm</span></a></li>
+<li class="cpp98 cpp11"><a href="../polar/index.html"><span>polar</span></a></li>
+<li class="cpp98 cpp11"><a href="../pow/index.html"><span>pow</span></a></li>
+<li class="cpp98 cpp11"><a href="../real/index.html"><span>real</span></a></li>
+<li class="cpp98 cpp11"><a href="../sin/index.html"><span>sin</span></a></li>
+<li class="cpp98 cpp11"><a href="../sinh/index.html"><span>sinh</span></a></li>
+<li class="cpp98 cpp11"><a href="../sqrt/index.html"><span>sqrt</span></a></li>
+<li class="cpp98 cpp11"><a href="../tan/index.html"><span>tan</span></a></li>
+<li class="cpp98 cpp11"><a href="../tanh/index.html"><span>tanh</span></a></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstd%2Fcomplex%2Fabs%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit14fb.html?a=std+complex+abs'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete14fb.html?a=std+complex+abs'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/complex/abs/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:56:59 GMT -->
+</html>

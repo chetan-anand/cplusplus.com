@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/string/string/string/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:15:08 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>string::string - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">Strings library</a></li>
+<li><a href="../index.html">string</a></li>
+<li class="here">string</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">constructor member</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">string</a>::string</h1>
+<div id="I_file" title="header &lt;string&gt;">&lt;string&gt;</div>
+<div class="C_prototype"><pre>string ( );string ( const string&amp; str );string ( const string&amp; str, size_t pos, size_t n = npos );string ( const char * s, size_t n );string ( const char * s );string ( size_t n, char c );template&lt;class InputIterator&gt; string (InputIterator begin, InputIterator end);</pre></div><div id="I_description">Construct string object</div>
+Constructs a standard <a href="http://www.cplusplus.com/string">string</a> object and initializes its content.<br>
+<br>
+The different constructor versions allow for the content to be initialized in different ways:<br>
+<dl>
+<dt>string ( );</dt>
+<dd>Content is initialized to an empty string.</dd>
+<dt>string ( const string& str );<br>
+</dt>
+<dd>Content is initialized to a copy of the <a href="http://www.cplusplus.com/string">string</a> object <i>str</i>.</dd>
+<dt>string ( const string& str, size_t pos, size_t n = npos );</dt>
+<dd>Content is initialized to a copy of a substring of <i>str</i>. The substring is the portion of <i>str</i> that begins at the character position <i>pos</i> and takes up to <i>n</i> characters (it takes less than <i>n</i> if the end of <i>str</i> is reached before).</dd>
+<dt>string ( const char * s, size_t n );</dt>
+<dd>Content is initialized to a copy of the string formed by the first <i>n</i> characters in the array of characters pointed by <i>s</i>.</dd>
+<dt>string ( const char * s );</dt>
+<dd>Content is initialized to a copy of the string formed by the null-terminated character sequence (C string) pointed by <i>s</i>. The length of the character sequence is determined by the first occurrence of a null character (as determined by <a href="http://www.cplusplus.com/char_traits">traits</a>.length(s)). This version can be used to initialize a <a href="http://www.cplusplus.com/string">string</a> object using a <i>string literal constant</i>.</dd>
+<dt>string ( size_t n, char c );</dt>
+<dd>Content is initialized as a string formed by a repetition of character <i>c</i>, <i>n</i> times.</dd>
+<dt>template&lt;class InputIterator&gt; string (InputIterator begin, InputIterator end);</dt>
+<dd>If <i>InputIterator</i> is an integral type, behaves as the sixth constructor version (the one right above this) by typecasting <i>begin</i> and <i>end</i> to call it:<br>
+<tt>string(static_cast&lt;size_t&gt;(begin),static_cast&lt;char&gt;(end));</tt> <br>
+In any other case, the parameters are taken as iterators, and the content is initialized with the values of the elements that go from the element referred by iterator <i>begin</i> to the element right before the one referred by iterator <i>end</i>.</dd>
+</dl>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Another object of class <a href="http://www.cplusplus.com/string">string</a> whose content is used to initialize the content of this.</dd>
+<dt>pos</dt>
+<dd>Starting position of the substring of <i>str</i> that is used to initialize the content. Notice that the first position has a value of <tt>0</tt>, not <tt>1</tt>.<br>
+A value for this parameter out of the content of <i>str</i> throws an <tt>out_of_range</tt> exception.<br>
+</dd>
+<dt>n</dt>
+<dd>Number of characters to use for the content (i.e., its length).<br>
+The default value in the third constructor version: <tt>npos</tt>, is a static member constant with the greatest possible value for a <a href="http://www.cplusplus.com/size_t">size_t</a> element. In this case all the characters until the end of <i>str</i> are used.</dd>
+<dt>s</dt>
+<dd>Array with a sequence of characters.<br>
+In the fourth constructor version, the length is determined by parameter <i>n</i>, even including null characters in the content.<br>
+By contrast, in the fifth constructor, <i>s</i> is a null-terminated character, and therefore its length is determined only by the first occurrence of a null character.</dd>
+<dt>c</dt>
+<dd>Character value to be used to initialize the string content. This character is repeated <i>n</i> times.</dd>
+<dt>begin</dt>
+<dd>If, along with <i>end</i>, both are integers, it is equivalent to parameter <i>n</i>, otherwise it is an iterator referring to the beginning of a sequence of characters.</dd>
+<dt>end</dt>
+<dd>If along with <i>begin</i>, both are integers, it is equivalent to parameter <i>c</i>, otherwise it is an iterator referring to the past-the-end element of a sequence of characters.</dd>
+</dl>
+<br>
+Except for the copy constructor, an optional final parameter exists for all <tt>basic_string</tt> constructors, whose type is its <tt>Allocator</tt> template argument. This parameter influences the <i>memory allocation model</i> to be used for the object. To provide a better readability, and because under no known compiler implementation the <i>memory allocation model</i> for <a href="http://www.cplusplus.com/string">string</a>s (<tt>allocator&lt;char&gt;</tt>) is affected by its value, it has not been included in the declarations above, but see the basic template member declaration ahead for a more complete declaration.<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// string constructor</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>int</var> main ()
+{
+  string s0 (<kbd>"Initial string"</kbd>);
+
+  <cite>// constructors used in the same order as described above:</cite>
+  string s1;
+  string s2 (s0);
+  string s3 (s0, 8, 3);
+  string s4 (<kbd>"A character sequence"</kbd>, 6);
+  string s5 (<kbd>"Another character sequence"</kbd>);
+  string s6 (10, <kbd>'x'</kbd>);
+  string s7a (10, 42);
+  string s7b (s0.begin(), s0.begin()+7);
+
+  cout &lt;&lt; <kbd>"s1: "</kbd> &lt;&lt; s1 &lt;&lt; <kbd>"\ns2: "</kbd> &lt;&lt; s2 &lt;&lt; <kbd>"\ns3: "</kbd> &lt;&lt; s3;
+  cout &lt;&lt; <kbd>"\ns4: "</kbd> &lt;&lt; s4 &lt;&lt; <kbd>"\ns5: "</kbd> &lt;&lt; s5 &lt;&lt; <kbd>"\ns6: "</kbd> &lt;&lt; s6;
+  cout &lt;&lt; <kbd>"\ns7a: "</kbd> &lt;&lt; s7a &lt;&lt; <kbd>"\ns7b: "</kbd> &lt;&lt; s7b &lt;&lt; endl;
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>s1: 
+s2: Initial string
+s3: str
+s4: A char
+s5: Another character sequence
+s6: xxxxxxxxxx
+s7a: **********
+s7b: Initial
+</samp></pre></td></tr></table></div>
+<br>
+<h3>Basic template member declaration</h3>
+( basic_string&lt;charT,traits,Allocator&gt; )<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><var>typedef</var> <var>typename</var> Allocator::size_type size_type;
+<var>explicit</var> basic_string ( <var>const</var> Allocator&amp; a = Allocator() );
+basic_string ( <var>const</var> basic_string&amp; str);
+basic_string ( <var>const</var> basic_string&amp; str, size_type pos, size_type n = npos,
+               <var>const</var> Allocator&amp; a = Allocator() );
+basic_string ( <var>const</var> charT* s, size_type n,
+               <var>const</var> Allocator&amp; a = Allocator() );
+basic_string ( <var>const</var> charT* s, <var>const</var> Allocator&amp; a = Allocator() );
+basic_string ( size_type n, charT c, <var>const</var> Allocator&amp; a = Allocator() );
+<var>template</var>&lt;<var>class</var> InputIterator&gt;
+   basic_string (InputIterator begin, InputIterator end); </code></pre></td></tr></table></div>
+<br>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../assign/index.html"><b>string::assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../clear/index.html"><b>string::clear</b></a></dt><dd>Clear string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../c_str/index.html"><b>string::c_str</b></a></dt><dd>Get C string equivalent <span class="typ">(public member function)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">Strings library</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../char_traits/index.html"><span>char_traits</span></a></li>
+<li class="C_Collapsable"><h4>classes:</h4><ul>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>string</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>global functions:</h4><ul>
+<li class="cpp98 cpp11"><a href="../../getline/index.html"><span>getline</span></a></li>
+<li class="cpp98 cpp11"><a href="../../operator%2b/index.html"><span>operator+</span></a></li>
+<li class="cpp98 cpp11"><a href="../../operator__/index.html"><span>operator&lt;&lt;</span></a></li>
+<li class="cpp98 cpp11"><a href="../../operator__/index-2.html"><span>operator&gt;&gt;</span></a></li>
+<li class="cpp98 cpp11"><a href="../../operators/index.html"><span>comparison operators</span></a></li>
+<li class="cpp98 cpp11"><a href="../../swap/index.html"><span>swap</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">string</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 selected"><a href="index.html"><span>string::string</span></a></li>
+<li class="C_Collapsable"><h4>member constants:</h4><ul>
+<li class="cpp98 cpp11"><a href="../npos/index.html"><span>string::npos</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="cpp98 cpp11"><a href="../append/index.html"><span>string::append</span></a></li>
+<li class="cpp98 cpp11"><a href="../assign/index.html"><span>string::assign</span></a></li>
+<li class="cpp98 cpp11"><a href="../at/index.html"><span>string::at</span></a></li>
+<li class="cpp98 cpp11"><a href="../begin/index.html"><span>string::begin</span></a></li>
+<li class="cpp98 cpp11"><a href="../capacity/index.html"><span>string::capacity</span></a></li>
+<li class="cpp98 cpp11"><a href="../clear/index.html"><span>string::clear</span></a></li>
+<li class="cpp98 cpp11"><a href="../compare/index.html"><span>string::compare</span></a></li>
+<li class="cpp98 cpp11"><a href="../copy/index.html"><span>string::copy</span></a></li>
+<li class="cpp98 cpp11"><a href="../c_str/index.html"><span>string::c_str</span></a></li>
+<li class="cpp98 cpp11"><a href="../data/index.html"><span>string::data</span></a></li>
+<li class="cpp98 cpp11"><a href="../empty/index.html"><span>string::empty</span></a></li>
+<li class="cpp98 cpp11"><a href="../end/index.html"><span>string::end</span></a></li>
+<li class="cpp98 cpp11"><a href="../erase/index.html"><span>string::erase</span></a></li>
+<li class="cpp98 cpp11"><a href="../find/index.html"><span>string::find</span></a></li>
+<li class="cpp98 cpp11"><a href="../find_first_not_of/index.html"><span>string::find_first_not_of</span></a></li>
+<li class="cpp98 cpp11"><a href="../find_first_of/index.html"><span>string::find_first_of</span></a></li>
+<li class="cpp98 cpp11"><a href="../find_last_not_of/index.html"><span>string::find_last_not_of</span></a></li>
+<li class="cpp98 cpp11"><a href="../find_last_of/index.html"><span>string::find_last_of</span></a></li>
+<li class="cpp98 cpp11"><a href="../get_allocator/index.html"><span>string::get_allocator</span></a></li>
+<li class="cpp98 cpp11"><a href="../insert/index.html"><span>string::insert</span></a></li>
+<li class="cpp98 cpp11"><a href="../length/index.html"><span>string::length</span></a></li>
+<li class="cpp98 cpp11"><a href="../max_size/index.html"><span>string::max_size</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%2b%3d/index.html"><span>string::operator+=</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%3d/index.html"><span>string::operator=</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%5b%5d/index.html"><span>string::operator[]</span></a></li>
+<li class="cpp98 cpp11"><a href="../push_back/index.html"><span>string::push_back</span></a></li>
+<li class="cpp98 cpp11"><a href="../rbegin/index.html"><span>string::rbegin</span></a></li>
+<li class="cpp98 cpp11"><a href="../rend/index.html"><span>string::rend</span></a></li>
+<li class="cpp98 cpp11"><a href="../replace/index.html"><span>string::replace</span></a></li>
+<li class="cpp98 cpp11"><a href="../reserve/index.html"><span>string::reserve</span></a></li>
+<li class="cpp98 cpp11"><a href="../resize/index.html"><span>string::resize</span></a></li>
+<li class="cpp98 cpp11"><a href="../rfind/index.html"><span>string::rfind</span></a></li>
+<li class="cpp98 cpp11"><a href="../size/index.html"><span>string::size</span></a></li>
+<li class="cpp98 cpp11"><a href="../substr/index.html"><span>string::substr</span></a></li>
+<li class="cpp98 cpp11"><a href="../swap/index.html"><span>string::swap</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstring%2Fstring%2Fstring%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit1e8b.html?a=string+string+string'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete1e8b.html?a=string+string+string'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/string/string/string/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:15:09 GMT -->
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/new/operator delete/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:40:54 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>operator delete - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">Miscellaneous</a></li>
+<li><a href="../index.html">new</a></li>
+<li class="here">operator delete</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">function</div>
+<h1>operator delete</h1>
+<div id="I_file" title="header &lt;new&gt;">&lt;new&gt;</div>
+<div class="C_prototype"><pre>void operator delete (void* ptr) throw ();void operator delete (void* ptr, const std::nothrow_t&amp; nothrow_constant) throw();void operator delete (void* ptr, void* voidptr2) throw();</pre></div><div id="I_description">Deallocate storage space</div>
+The first and second versions deallocate the memory block pointed by <i>ptr</i> (if not-null), releasing the storage space previously allocated to it by a call to <a href="http://www.cplusplus.com/operator new">operator new</a> and making that pointer location invalid.<br>
+<br>
+The third version does nothing.<br>
+<br>
+The second and third versions <b>cannot</b> be implicitly called by the operator expression (the <tt>delete</tt> operator calls once the function <tt>operator delete</tt> for each of its arguments). Although they can be called explicitly as <tt>operator new</tt> function calls, their default definitions serve no particular purpose - they are provided as counterparts for the <a href="http://www.cplusplus.com/operator new">operator new</a> functions and called accordingly when done automatically.<br>
+<br>
+Global dynamic storage operator functions are special in the standard library:<br>
+<ul>
+<li>All three versions of <tt>operator delete</tt> are declared in the global namespace, not in the <tt>std</tt> namespace.</li>
+<li>The first and second versions are <i>implicitly declared</i> in every translation unit of a C++ program: The header <tt>&lt;new&gt;</tt> does not need to be included for them to be present.</li>
+<li>The first and second versions are also <i>replaceable</i>: A program may provide its own definition, that replaces the default one, to produce the result described above.</li>
+</ul>
+<br>
+<tt>operator delete</tt> can be called explicitly as a regular function, but in C++, <tt>delete</tt> is an operator with a very specific behavior: An expression with the <tt>delete</tt> operator, first calls the appropriate destructor (if needed), and then calls function <tt>operator delete</tt> to release the storage.<br>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>ptr</dt>
+<dd>Either a null pointer, or a pointer to a memory block to be released, type-casted to a <tt>void*</tt>.<br>
+This pointer value should have been returned by a previous call to <tt>operator new</tt>.</dd>
+<dt>nothrow_constant</dt>
+<dd>The constant <a href="http://www.cplusplus.com/nothrow">nothrow</a>.<br>
+In the default definition, this parameter is ignored, thus the <i>nothrow</i> version performs the exact same functionality as the default version. But both exist, and both may be redefined separately.<br>
+<a href="http://www.cplusplus.com/nothrow_t">nothrow_t</a> is the type of constant <a href="http://www.cplusplus.com/nothrow">nothrow</a>.<br>
+</dd>
+<dt>voidptr2</dt>
+<dd>A void pointer. The value is ignored in the default definition.</dd>
+</dl>
+<br>
+<h3>Return value</h3>
+none<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// operator delete example</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;new&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>struct</var> myclass {
+  myclass() {cout &lt;&lt;<kbd>"myclass constructed\n"</kbd>;}
+  ~myclass() {cout &lt;&lt;<kbd>"myclass destroyed\n"</kbd>;}
+};
+
+<var>int</var> main () {
+  myclass * pt;
+
+  pt = <var>new</var> myclass;
+  <var>delete</var> pt;
+
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+myclass constructed
+myclass destroyed
+</samp></pre></td></tr></table></div>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../operator%20new/index.html"><b>operator new</b></a></dt><dd>Allocate storage space <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "../operator%20delete%5b%5d/index.html"><b>operator delete[]</b></a></dt><dd>Deallocate storage space of array <span class="typ">(function)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">Miscellaneous</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../chrono/index.html"><span>chrono</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../complex/index.html"><span>complex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../exception/index.html"><span>exception</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../functional/index.html"><span>functional</span></a></li>
+<li class="cpp11 folder"><a href="../../initializer_list/index.html"><span>initializer_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../iterator/index.html"><span>iterator</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../limits/index.html"><span>limits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../locale/index.html"><span>locale</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../memory/index.html"><span>memory</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>new</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../numeric/index.html"><span>numeric</span></a></li>
+<li class="cpp11 folder"><a href="../../random/index.html"><span>random</span></a></li>
+<li class="cpp11 folder"><a href="../../ratio/index.html"><span>ratio</span></a></li>
+<li class="cpp11 folder"><a href="../../regex/index.html"><span>regex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stdexcept/index.html"><span>stdexcept</span></a></li>
+<li class="cpp11 folder"><a href="../../system_error/index.html"><span>system_error</span></a></li>
+<li class="cpp11 folder"><a href="../../tuple/index.html"><span>tuple</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../typeinfo/index.html"><span>typeinfo</span></a></li>
+<li class="cpp11 folder"><a href="../../type_traits/index.html"><span>type_traits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../utility/index.html"><span>utility</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../valarray/index.html"><span>valarray</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">new</a></b></h3>
+<ul>
+<li class="cpp98 cpp11"><a href="../bad_alloc/index.html"><span>bad_alloc</span></a></li>
+<li class="cpp98 cpp11"><a href="../new_handler/index.html"><span>new_handler</span></a></li>
+<li class="cpp98 cpp11"><a href="../nothrow/index.html"><span>nothrow</span></a></li>
+<li class="cpp98 cpp11"><a href="../nothrow_t/index.html"><span>nothrow_t</span></a></li>
+<li class="cpp98 cpp11"><a href="../set_new_handler/index.html"><span>set_new_handler</span></a></li>
+<li class="C_Collapsable"><h4>global namespace:</h4><ul>
+<li class="cpp98 cpp11 selected"><a href="index.html"><span>operator delete</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%20delete%5b%5d/index.html"><span>operator delete[]</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%20new/index.html"><span>operator new</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%20new%5b%5d/index.html"><span>operator new[]</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstd%2Fnew%2Foperator%2520delete%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit6193.html?a=std+new+operator%20delete'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete6193.html?a=std+new+operator%20delete'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/new/operator delete/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:40:57 GMT -->
+</html>

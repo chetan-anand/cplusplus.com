@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/string/char_traits/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:44:37 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>char_traits - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../v311/main.css">
+<script src="../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../index.html">Reference</a></li>
+<li><a href="../index.html">Strings library</a></li>
+<li class="here">char_traits</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">class template</div>
+<h1><span class="namespace" title="namespace std">std::</span>char_traits</h1>
+<div id="I_file" title="header &lt;string&gt;">&lt;string&gt;</div>
+<div class="C_prototype"><pre>template &lt;class charT&gt; struct char_traits;</pre></div><div id="I_description">Character traits</div>
+C++ strings can be based on different types of characters. And each type of character can also have different properties, which are known as <i>character traits</i>.<br>
+<br>
+The character traits for a given type define properties of this character type such as how they compare to each other, how they are moved or copied or how they type-cast to/from other types.<br>
+<br>
+Each set of character traits is specified as a <i>template specialization</i> of this class template that has to define the public members listed below, which shall behave as explained, although the internals on how this is achieved can be freely implemented in the class template specialization for the type.<br>
+<br>
+The <tt>&lt;string&gt;</tt> header defines two specializations for this class template:<br>
+<ul>
+<li><tt>template &lt;&gt; struct char_traits&lt;char&gt;</tt></li>
+<li><tt>template &lt;&gt; struct char_traits&lt;wchar_t&gt;</tt></li>
+</ul>
+<br>
+The public members that these template specializations have are:<br>
+<br>
+<dl>
+<dt>typedef charT char_type;</dt>
+<dd><tt>charT</tt> is the character container type (the class template parameter).<br>
+For <tt>char_traits&lt;char&gt;</tt> this is <tt>char</tt>, and for <tt>char_traits&lt;wchar_t&gt;</tt> this is <tt>wchar_t</tt>.</dd>
+<dt>typedef INT_T int_type;</dt>
+<dd>Where INT_T is a type that can represent all the valid characters representable by a <tt>char_type</tt> plus an <i>end-of-file</i> value (<tt>eof</tt>) which is compatible with <tt>iostream</tt> class member functions.<br>
+For <tt>char_traits&lt;char&gt;</tt> this is <tt>int</tt>, and for <tt>char_traits&lt;wchar_t&gt;</tt> this is <tt>wint_t</tt></dd>
+<dt>typedef OFF_T off_type;</dt>
+<dd>Where OFF_T is an offset type that behaves as <a href="http://www.cplusplus.com/streamoff">streamoff</a> with the <tt>iostream</tt> class member functions using this type.<br>
+For both <tt>char_traits&lt;char&gt;</tt> and <tt>char_traits&lt;wchar_t&gt;</tt> this is <tt>streamoff</tt>.</dd>
+<dt>typedef POS_T pos_type;</dt>
+<dd>Where POS_T is a positioning type that behaves as <a href="http://www.cplusplus.com/streampos">streampos</a> with the <tt>iostream</tt> class member functions using this type.<br>
+For both <tt>char_traits&lt;char&gt;</tt> and <tt>char_traits&lt;wchar_t&gt;</tt> this is <tt>streampos</tt>.</dd>
+<dt>typedef STATE_T state_type;</dt>
+<dd>Where STATE_T is a type used to instantiate templates with <tt>CopyConstructible</tt> requirements.<br>
+For both <tt>char_traits&lt;char&gt;</tt> and <tt>char_traits&lt;wchar_t&gt;</tt> this is <tt>mbstate_t</tt>.</dd>
+<dt>static void assign ( char_type& c1, char_type& c2);</dt>
+<dd>Assigns the value of <i>c2</i> to <i>c1</i>.<br>
+In both, <tt>char_traits&lt;char&gt;</tt> and <tt>char_traits&lt;wchar_t&gt;</tt>, this is defined identically to the built-in <tt>operator =</tt>.</dd>
+<dt>static bool eq ( const char_type& c1, const char_type& c2);</dt>
+<dd>Returns whether character <i>c1</i> is equal to character <i>c2</i>.<br>
+In both, <tt>char_traits&lt;char&gt;</tt> and <tt>char_traits&lt;wchar_t&gt;</tt>, this is defined identically to the built-in <tt>operator ==</tt>.</dd>
+<dt>static bool lt ( const char_type& c1, const char_type& c2);</dt>
+<dd>Returns whether character <i>c1</i> is less than character <i>c2</i>.<br>
+In both, <tt>char_traits&lt;char&gt;</tt> and <tt>char_traits&lt;wchar_t&gt;</tt>, this is defined identically to the built-in <tt>operator &lt;</tt>.</dd>
+<dt>static int compare ( const char_type* s1, const char_type* s2, size_t n);</dt>
+<dd>Returns <tt>0</tt> if the first <i>n</i> characters of <i>s1</i> compare equal to those of <i>s2</i>. Returns a negative value if the first character that does not match in that range compares in <i>s1</i> less than in <i>s2</i>, and a positive value if it does not. Similar in behavior to <a href="http://www.cplusplus.com/strncmp">strncmp</a> C function.</dd>
+<dt>static size_t length ( const char_type* s);</dt>
+<dd>Returns the length of the null-terminated character string <i>s</i>. Similar in behavior to <a href="http://www.cplusplus.com/strlen">strlen</a> C function.</dd>
+<dt>static const char_type* find ( const char_type* s, size_t n, const char_type& a );</dt>
+<dd>Returns a pointer to the first occurrence of <i>a</i> in the first <i>n</i> characters of character string <i>s</i>. Similar in behavior to <a href="http://www.cplusplus.com/strchr">strchr</a> C function.</dd>
+<dt>static char_type* move ( char_type* s1, const char_type* s2, size_t n );</dt>
+<dd>Copies <i>n</i> characters from <i>s2</i> to <i>s1</i> and returns <i>s1</i>. The original and copied content may overlap in memory. Similar in behavior to <a href="http://www.cplusplus.com/memmove">memmove</a> C function.</dd>
+<dt>static char_type* copy ( char_type* s1, const char_type* s2, size_t n );</dt>
+<dd>Copies <i>n</i> characters from <i>s2</i> to <i>s1</i> and returns <i>s1</i>. The original and copied content shall not overlap in memory. Similar in behavior to <a href="http://www.cplusplus.com/memcpy">memcpy</a> C function.</dd>
+<dt>static char_type* assign ( char_type* s, size_t n, char_type a );</dt>
+<dd>Assigns <i>a</i> to the first <i>n</i> characters of <i>s</i> and returns <i>s</i>. Similar in behavior to <a href="http://www.cplusplus.com/memset">memset</a> C function.</dd>
+<dt>static int_type eof ( );</dt>
+<dd>Returns the value used as <i>end-of-file</i> indicator. This value is a value of type <tt>int_type</tt> such that it does not compare equal to the <tt>int_type</tt> equivalents of any valid character value.<br>
+For <tt>char_traits&lt;char&gt;</tt> this returns <tt>EOF</tt>, and for <tt>char_traits&lt;wchar_t&gt;</tt> this returns <tt>WEOF</tt></dd>
+<dt>static int_type not_eof ( const int_type& c );</dt>
+<dd>Returns <i>c</i>, except if <i>c</i> is equal to <tt>eof()</tt>, in which case it return some other value not equal to <tt>eof()</tt>.</dd>
+<dt>static char_type to_char_type ( const int_type& c );</dt>
+<dd>Returns the <tt>char_type</tt> equivalent to <i>c</i>, if such value exists.</dd>
+<dt>static int_type to_int_type ( const char_type& c );</dt>
+<dd>Returns the <tt>int_type</tt> equivalent to <i>c</i>.</dd>
+<dt>static bool eq_int_type ( const int_type& c1, const int_type& c2 );</dt>
+<dd>If both the values of <i>c1</i> and <i>c2</i> can be obtained by using <tt>to_int_type</tt> on some character, returns whether they would be equal (as if by member <tt>eq</tt>). If both <i>c1</i> and <i>c2</i> are <tt>eof()</tt>, also returns true. If only one of them is <tt>eof()</tt>, returns false.</dd>
+</dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">Strings library</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 selected folder"><a href="index.html"><span>char_traits</span></a></li>
+<li class="C_Collapsable"><h4>classes:</h4><ul>
+<li class="cpp98 cpp11 folder"><a href="../string/index.html"><span>string</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>global functions:</h4><ul>
+<li class="cpp98 cpp11"><a href="../getline/index.html"><span>getline</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%2b/index.html"><span>operator+</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator__/index.html"><span>operator&lt;&lt;</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator__/index-2.html"><span>operator&gt;&gt;</span></a></li>
+<li class="cpp98 cpp11"><a href="../operators/index.html"><span>comparison operators</span></a></li>
+<li class="cpp98 cpp11"><a href="../swap/index.html"><span>swap</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstring%2Fchar_traits%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			el.appendChild(btn('New Page','New Page','new','../../new2f79.html?a=string+char_traits'));
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../edit2f79.html?a=string+char_traits'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../delete2f79.html?a=string+char_traits'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/string/char_traits/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:44:41 GMT -->
+</html>

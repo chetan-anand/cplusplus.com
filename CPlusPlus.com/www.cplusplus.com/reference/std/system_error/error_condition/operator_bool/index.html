@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/system_error/error_condition/operator_bool/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:37:03 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>error_condition::operator bool - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../../v311/main.css">
+<script src="../../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../../index.html">Reference</a></li>
+<li><a href="../../../index.html">Miscellaneous</a></li>
+<li><a href="../../index.html">system_error</a></li>
+<li><a href="../index.html">error_condition</a></li>
+<li class="here">operator bool</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">public member function</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">error_condition</a>::operator bool<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div id="I_file" title="header &lt;system_error&gt;">&lt;system_error&gt;</div>
+<div class="C_prototype"><pre>explicit operator bool() const noexcept;</pre></div><div id="I_description">Convert to bool</div>
+<section id="description">
+Returns whether the error condition has a numerical <a href="http://www.cplusplus.com/error_condition::value">value</a> other than <tt>0</tt>.<br>
+<br>
+If it is zero (which is generally used to represent no error), the function returns <tt>false</tt>, otherwise it returns <tt>true</tt>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<tt>true</tt> if the condition's numerical value is not zero.<br>
+<tt>false</tt> otherwise.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../value/index.html"><b>error_condition::value</b></a></dt><dd>Error condition value <span class="typ">(public member function)</span></dd></dl>
+</section></div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../../index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../../index.html">Miscellaneous</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../../chrono/index.html"><span>chrono</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../complex/index.html"><span>complex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../exception/index.html"><span>exception</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../functional/index.html"><span>functional</span></a></li>
+<li class="cpp11 folder"><a href="../../../initializer_list/index.html"><span>initializer_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iterator/index.html"><span>iterator</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../limits/index.html"><span>limits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../locale/index.html"><span>locale</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../memory/index.html"><span>memory</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../new/index.html"><span>new</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../numeric/index.html"><span>numeric</span></a></li>
+<li class="cpp11 folder"><a href="../../../random/index.html"><span>random</span></a></li>
+<li class="cpp11 folder"><a href="../../../ratio/index.html"><span>ratio</span></a></li>
+<li class="cpp11 folder"><a href="../../../regex/index.html"><span>regex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stdexcept/index.html"><span>stdexcept</span></a></li>
+<li class="cpp11 selected folder"><a href="../../index.html"><span>system_error</span></a></li>
+<li class="cpp11 folder"><a href="../../../tuple/index.html"><span>tuple</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../typeinfo/index.html"><span>typeinfo</span></a></li>
+<li class="cpp11 folder"><a href="../../../type_traits/index.html"><span>type_traits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../utility/index.html"><span>utility</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../valarray/index.html"><span>valarray</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp11">
+<h3><b><a href="../../index.html">system_error</a></b></h3>
+<ul>
+<li class="C_Collapsable"><h4>classes:</h4><ul>
+<li class="cpp11 folder"><a href="../../error_category/index.html"><span>error_category</span></a></li>
+<li class="cpp11 folder"><a href="../../error_code/index.html"><span>error_code</span></a></li>
+<li class="cpp11 selected folder"><a href="../index.html"><span>error_condition</span></a></li>
+<li class="cpp11"><a href="../../is_error_code_enum/index.html"><span>is_error_code_enum</span></a></li>
+<li class="cpp11"><a href="../../is_error_condition_enum/index.html"><span>is_error_condition_enum</span></a></li>
+<li class="cpp11 folder"><a href="../../system_error/index.html"><span>system_error</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>enum classes:</h4><ul>
+<li class="cpp11"><a href="../../errc/index.html"><span>errc</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>functions:</h4><ul>
+<li class="cpp11"><a href="../../generic_category/index.html"><span>generic_category</span></a></li>
+<li class="cpp11"><a href="../../make_error_code/index.html"><span>make_error_code</span></a></li>
+<li class="cpp11"><a href="../../make_error_condition/index.html"><span>make_error_condition</span></a></li>
+<li class="cpp11"><a href="../../system_category/index.html"><span>system_category</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp11">
+<h3><b><a href="../index.html">error_condition</a></b></h3>
+<ul>
+<li class="cpp11"><a href="../error_condition/index.html"><span>error_condition::error_condition</span></a></li>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="cpp11"><a href="../assign/index.html"><span>error_condition::assign</span></a></li>
+<li class="cpp11"><a href="../category/index.html"><span>error_condition::category</span></a></li>
+<li class="cpp11"><a href="../clear/index.html"><span>error_condition::clear</span></a></li>
+<li class="cpp11"><a href="../message/index.html"><span>error_condition::message</span></a></li>
+<li class="cpp11"><a href="../operator%3d/index.html"><span>error_condition::operator=</span></a></li>
+<li class="cpp11 selected"><a href="index.html"><span>error_condition::operator bool</span></a></li>
+<li class="cpp11"><a href="../value/index.html"><span>error_condition::value</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>non-member functions:</h4><ul>
+<li class="cpp11"><a href="../operators/index.html"><span>relational operators (error_condition)</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstd%2Fsystem_error%2Ferror_condition%2Foperator_bool%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../../editb2ba.html?a=std+system_error+error_condition+operator_bool'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../../deleteb2ba.html?a=std+system_error+error_condition+operator_bool'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/system_error/error_condition/operator_bool/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:37:04 GMT -->
+</html>

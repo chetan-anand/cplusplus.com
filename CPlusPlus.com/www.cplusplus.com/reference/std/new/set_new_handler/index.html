@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/new/set_new_handler/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:41:02 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>set_new_handler - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">Miscellaneous</a></li>
+<li><a href="../index.html">new</a></li>
+<li class="here">set_new_handler</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">function</div>
+<h1><span class="namespace" title="namespace std">std::</span>set_new_handler</h1>
+<div id="I_file" title="header &lt;new&gt;">&lt;new&gt;</div>
+<div class="C_prototype"><pre>new_handler set_new_handler (new_handler new_p) throw();</pre></div><div id="I_description">Set new handler function</div>
+Sets <i>new_p</i> as the <i>new handler</i> function.<br>
+<br>
+The <i>new handler</i> function is the function that is called by functions <a href="http://www.cplusplus.com/operator new">operator new</a> or <a href="http://www.cplusplus.com/operator new[]">operator new[] </a> when they are not successful in an attempt to allocate memory.<br>
+<br>
+The <i>new handler</i> function can make more storage available for a new attempt to allocate the storage. If, and only if, the function succeeds in making more storage avaible, it may return. Otherwise it shall either throw a <a href="http://www.cplusplus.com/bad_alloc">bad_alloc</a> exception (or a derived class) or terminate the program with <a href="http://www.cplusplus.com/cstdlib">cstdlib</a>'s <a href="http://www.cplusplus.com/abort">abort</a> or <a href="http://www.cplusplus.com/exit">exit</a> functions.<br>
+<br>
+If the <i>new handler</i> function returns (i.e., it made more storage available), it can be called again if the <a href="http://www.cplusplus.com/operator new">operator new</a> or <a href="http://www.cplusplus.com/operator new[]">operator new[] </a> function is again not successful attempting to allocate the storage. This may repeat itself until either the allocation is successful or the <i>handler function</i> fails.<br>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>new_p</dt>
+<dd>Function that takes no parameters and returns <tt>void</tt>.<br>
+The function can make more storage available or throw an exception or terminate the program.<br>
+<a href="http://www.cplusplus.com/new_handler">new_handler</a> is a function pointer type taking no parameters and returning <tt>void</tt>.</dd>
+</dl>
+<br>
+<h3>Return value</h3>
+The value of the current <i>new_handler</i> function if this has been previously set by this function, or a null pointer if this is the first call to <tt>set_new_handler</tt>.<br>
+<a href="http://www.cplusplus.com/new_handler">new_handler</a> is a function pointer type taking no parameters and returning <tt>void</tt>.<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>// new_handler example</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;cstdlib&gt;</dfn>
+<dfn>#include &lt;new&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>void</var> no_memory () {
+  cout &lt;&lt; <kbd>"Failed to allocate memory!\n"</kbd>;
+  exit (1);
+}
+
+<var>int</var> main () {
+  set_new_handler(no_memory);
+  cout &lt;&lt; <kbd>"Attempting to allocate 1 GiB..."</kbd>;
+  <var>char</var>* p = <var>new</var> <var>char</var> [1024*1024*1024];
+  cout &lt;&lt; <kbd>"Ok\n"</kbd>;
+  <var>delete</var>[] p;
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Attempting to allocate 1 GiB... Ok
+</samp></pre></td></tr></table></div>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../new_handler/index.html"><b>new_handler</b></a></dt><dd>Type of new handler function <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "../bad_alloc/index.html"><b>bad_alloc</b></a></dt><dd>Exception thrown on failure allocating memory <span class="typ">(class)</span></dd></dl><dl class="links"><dt><a href= "../operator%20new/index.html"><b>operator new</b></a></dt><dd>Allocate storage space <span class="typ">(function)</span></dd></dl></div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">Miscellaneous</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../chrono/index.html"><span>chrono</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../complex/index.html"><span>complex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../exception/index.html"><span>exception</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../functional/index.html"><span>functional</span></a></li>
+<li class="cpp11 folder"><a href="../../initializer_list/index.html"><span>initializer_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../iterator/index.html"><span>iterator</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../limits/index.html"><span>limits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../locale/index.html"><span>locale</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../memory/index.html"><span>memory</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>new</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../numeric/index.html"><span>numeric</span></a></li>
+<li class="cpp11 folder"><a href="../../random/index.html"><span>random</span></a></li>
+<li class="cpp11 folder"><a href="../../ratio/index.html"><span>ratio</span></a></li>
+<li class="cpp11 folder"><a href="../../regex/index.html"><span>regex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stdexcept/index.html"><span>stdexcept</span></a></li>
+<li class="cpp11 folder"><a href="../../system_error/index.html"><span>system_error</span></a></li>
+<li class="cpp11 folder"><a href="../../tuple/index.html"><span>tuple</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../typeinfo/index.html"><span>typeinfo</span></a></li>
+<li class="cpp11 folder"><a href="../../type_traits/index.html"><span>type_traits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../utility/index.html"><span>utility</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../valarray/index.html"><span>valarray</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">new</a></b></h3>
+<ul>
+<li class="cpp98 cpp11"><a href="../bad_alloc/index.html"><span>bad_alloc</span></a></li>
+<li class="cpp98 cpp11"><a href="../new_handler/index.html"><span>new_handler</span></a></li>
+<li class="cpp98 cpp11"><a href="../nothrow/index.html"><span>nothrow</span></a></li>
+<li class="cpp98 cpp11"><a href="../nothrow_t/index.html"><span>nothrow_t</span></a></li>
+<li class="cpp98 cpp11 selected"><a href="index.html"><span>set_new_handler</span></a></li>
+<li class="C_Collapsable"><h4>global namespace:</h4><ul>
+<li class="cpp98 cpp11"><a href="../operator%20delete/index.html"><span>operator delete</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%20delete%5b%5d/index.html"><span>operator delete[]</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%20new/index.html"><span>operator new</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%20new%5b%5d/index.html"><span>operator new[]</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstd%2Fnew%2Fset_new_handler%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../editf536.html?a=std+new+set_new_handler'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../deletef536.html?a=std+new+set_new_handler'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/new/set_new_handler/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:41:04 GMT -->
+</html>

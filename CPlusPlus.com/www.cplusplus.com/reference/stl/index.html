@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:28:02 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>STL Containers - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../v311/main.css">
+<script src="../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../index.html">Reference</a></li>
+<li class="here">STL Containers</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">library</div>
+<h1>STL Containers</h1>
+<div id="I_description">Standard Template Library: Containers</div>
+A container is a holder object that stores a collection of other objects (its elements). They are implemented as class templates, which allows a great flexibility in the types supported as elements.<br>
+<br>
+The container manages the storage space for its elements and provides member functions to access them, either directly or through iterators (reference objects with similar properties to pointers).<br>
+<br>
+Containers replicate structures very commonly used in programming: dynamic arrays (<a href="http://www.cplusplus.com/vector">vector</a>), queues (<a href="http://www.cplusplus.com/queue">queue</a>), stacks (<a href="http://www.cplusplus.com/stack">stack</a>), heaps (<a href="http://www.cplusplus.com/priority_queue">priority_queue</a>), linked lists (<a href="http://www.cplusplus.com/list">list</a>), trees (<a href="http://www.cplusplus.com/set">set</a>), associative arrays (<a href="http://www.cplusplus.com/map">map</a>)...<br>
+<br>
+Many containers have several member functions in common, and share functionalities. The decision of which type of container to use for a specific need does not generally depend only on the functionality offered by the container, but also on the efficiency of some of its members (complexity). This is especially true for sequence containers, which offer different trade-offs in complexity between inserting/removing elements and accessing them.<br>
+<br>
+<a href="http://www.cplusplus.com/stack">stack</a>, <a href="http://www.cplusplus.com/queue">queue</a> and <a href="http://www.cplusplus.com/priority_queue">priority_queue</a> are implemented as <i>container adaptors</i>. Container adaptors are not full container classes, but classes that provide a specific interface relying on an object of one of the container classes (such as <a href="http://www.cplusplus.com/deque">deque</a> or <a href="http://www.cplusplus.com/list">list</a>) to handle the elements. The underlying container is encapsulated in such a way that its elements are accessed by the members of the <i>container class</i> independently of the underlying <i>container</i> class used.<br>
+<br>
+<h3>Container class templates</h3>
+<b>Sequence containers</b>:<br>
+<dl class="links"><dt><a href= "vector/index.html"><b>vector</b></a></dt><dd>Vector <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "deque/index.html"><b>deque</b></a></dt><dd>Double ended queue <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "list/index.html"><b>list</b></a></dt><dd>List <span class="typ">(class template)</span></dd></dl>
+<br>
+<b>Container adaptors</b>:<br>
+<dl class="links"><dt><a href= "stack/index.html"><b>stack</b></a></dt><dd>LIFO stack <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "queue/index.html"><b>queue</b></a></dt><dd>FIFO queue <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "priority_queue/index.html"><b>priority_queue</b></a></dt><dd>Priority queue <span class="typ">(class template)</span></dd></dl>
+<br>
+<b>Associative containers</b>:<br>
+<dl class="links"><dt><a href= "set/index.html"><b>set</b></a></dt><dd>Set <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "multiset/index.html"><b>multiset</b></a></dt><dd>Multiple-key set <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "map/index.html"><b>map</b></a></dt><dd>Map <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "multimap/index.html"><b>multimap</b></a></dt><dd>Multiple-key map <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "bitset/index.html"><b>bitset</b></a></dt><dd>Bitset <span class="typ">(class template)</span></dd></dl>
+<br>
+<h3>Member map</h3>
+This is a comparison chart with the different member functions present on each of the different containers:<br>
+<br>
+<table class="boxed">
+<tr><td colspan="3"></td><th colspan="3">Sequence containers</th><th colspan="4">Associative containers</th><th> </th></tr>
+<tr><td colspan="3">Headers</td><th><tt>&lt;vector&gt;</tt></th><th><tt>&lt;deque&gt;</tt></th><th><tt>&lt;list&gt;</tt></th><th colspan="2"><tt>&lt;set&gt;</tt></th><th colspan="2"><tt>&lt;map&gt;</tt></th><th><tt>&lt;bitset&gt;</tt></th></tr>
+<tr><td colspan="2">Members</td><td>complex</td><th><a href="http://www.cplusplus.com/vector">vector</a></th><th><a href="http://www.cplusplus.com/deque">deque</a></th><th><a href="http://www.cplusplus.com/list">list</a></th><th><a href="http://www.cplusplus.com/set">set</a></th><th><a href="http://www.cplusplus.com/multiset">multiset</a></th><th><a href="http://www.cplusplus.com/map">map</a></th><th><a href="http://www.cplusplus.com/multimap">multimap</a></th><th><a href="http://www.cplusplus.com/bitset">bitset</a></th></tr>
+<tr><td rowspan="3"> </td><td><i>constructor</i></td><td>*</td><td><a href="http://www.cplusplus.com/vector::vector">constructor</a></td><td><a href="http://www.cplusplus.com/deque::deque">constructor</a></td><td><a href="http://www.cplusplus.com/list::list">constructor</a></td><td><a href="http://www.cplusplus.com/set::set">constructor</a></td><td><a href="http://www.cplusplus.com/multiset::multiset">constructor</a></td><td><a href="http://www.cplusplus.com/map::map">constructor</a></td><td><a href="http://www.cplusplus.com/multimap::multimap">constructor</a></td><td><a href="http://www.cplusplus.com/bitset::bitset">constructor</a></td></tr>
+<tr><td><i>destructor</i></td><td>O(n)</td><td><a href="http://www.cplusplus.com/vector::~vector">destructor</a></td><td><a href="http://www.cplusplus.com/deque::~deque">destructor</a></td><td><a href="http://www.cplusplus.com/list::~list">destructor</a></td><td><a href="http://www.cplusplus.com/set::~set">destructor</a></td><td><a href="http://www.cplusplus.com/multiset::~multiset">destructor</a></td><td><a href="http://www.cplusplus.com/map::~map">destructor</a></td><td><a href="http://www.cplusplus.com/multimap::~multimap">destructor</a></td><td> </td></tr>
+<tr><td><tt>operator=</tt></td><td>O(n)</td><td><a href="http://www.cplusplus.com/vector::operator=">operator= </a></td><td><a href="http://www.cplusplus.com/deque::operator=">operator= </a></td><td><a href="http://www.cplusplus.com/list::operator=">operator= </a></td><td><a href="http://www.cplusplus.com/set::operator=">operator= </a></td><td><a href="http://www.cplusplus.com/multiset::operator=">operator= </a></td><td><a href="http://www.cplusplus.com/map::operator=">operator= </a></td><td><a href="http://www.cplusplus.com/multimap::operator=">operator= </a></td><td><a href="http://www.cplusplus.com/bitset::operator">operators</a></td></tr>
+<tr><td rowspan="4">iterators</td><td><tt>begin</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::begin">begin</a></td><td><a href="http://www.cplusplus.com/deque::begin">begin</a></td><td><a href="http://www.cplusplus.com/list::begin">begin</a></td><td><a href="http://www.cplusplus.com/set::begin">begin</a></td><td><a href="http://www.cplusplus.com/multiset::begin">begin</a></td><td><a href="http://www.cplusplus.com/map::begin">begin</a></td><td><a href="http://www.cplusplus.com/multimap::begin">begin</a></td><td> </td></tr>
+<tr><td><tt>end</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::end">end</a></td><td><a href="http://www.cplusplus.com/deque::end">end</a></td><td><a href="http://www.cplusplus.com/list::end">end</a></td><td><a href="http://www.cplusplus.com/set::end">end</a></td><td><a href="http://www.cplusplus.com/multiset::end">end</a></td><td><a href="http://www.cplusplus.com/map::end">end</a></td><td><a href="http://www.cplusplus.com/multimap::end">end</a></td><td> </td></tr>
+<tr><td><tt>rbegin</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::rbegin">rbegin</a></td><td><a href="http://www.cplusplus.com/deque::rbegin">rbegin</a></td><td><a href="http://www.cplusplus.com/list::rbegin">rbegin</a></td><td><a href="http://www.cplusplus.com/set::rbegin">rbegin</a></td><td><a href="http://www.cplusplus.com/multiset::rbegin">rbegin</a></td><td><a href="http://www.cplusplus.com/map::rbegin">rbegin</a></td><td><a href="http://www.cplusplus.com/multimap::rbegin">rbegin</a></td><td> </td></tr>
+<tr><td><tt>rend</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::rend">rend</a></td><td><a href="http://www.cplusplus.com/deque::rend">rend</a></td><td><a href="http://www.cplusplus.com/list::rend">rend</a></td><td><a href="http://www.cplusplus.com/set::rend">rend</a></td><td><a href="http://www.cplusplus.com/multiset::rend">rend</a></td><td><a href="http://www.cplusplus.com/map::rend">rend</a></td><td><a href="http://www.cplusplus.com/multimap::rend">rend</a></td><td> </td></tr>
+<tr><td rowspan="4">capacity</td><td><tt>size</tt></td><td>*</td><td><a href="http://www.cplusplus.com/vector::size">size</a></td><td><a href="http://www.cplusplus.com/deque::size">size</a></td><td><a href="http://www.cplusplus.com/list::size">size</a></td><td><a href="http://www.cplusplus.com/set::size">size</a></td><td><a href="http://www.cplusplus.com/multiset::size">size</a></td><td><a href="http://www.cplusplus.com/map::size">size</a></td><td><a href="http://www.cplusplus.com/multimap::size">size</a></td><td><a href="http://www.cplusplus.com/bitset::size">size</a></td></tr>
+<tr><td><tt>max_size</tt></td><td>*</td><td><a href="http://www.cplusplus.com/vector::max_size">max_size</a></td><td><a href="http://www.cplusplus.com/deque::max_size">max_size</a></td><td><a href="http://www.cplusplus.com/list::max_size">max_size</a></td><td><a href="http://www.cplusplus.com/set::max_size">max_size</a></td><td><a href="http://www.cplusplus.com/multiset::max_size">max_size</a></td><td><a href="http://www.cplusplus.com/map::max_size">max_size</a></td><td><a href="http://www.cplusplus.com/multimap::max_size">max_size</a></td><td> </td></tr>
+<tr><td><tt>empty</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::empty">empty</a></td><td><a href="http://www.cplusplus.com/deque::empty">empty</a></td><td><a href="http://www.cplusplus.com/list::empty">empty</a></td><td><a href="http://www.cplusplus.com/set::empty">empty</a></td><td><a href="http://www.cplusplus.com/multiset::empty">empty</a></td><td><a href="http://www.cplusplus.com/map::empty">empty</a></td><td><a href="http://www.cplusplus.com/multimap::empty">empty</a></td><td> </td></tr>
+<tr><td><tt>resize</tt></td><td>O(n)</td><td><a href="http://www.cplusplus.com/vector::resize">resize</a></td><td><a href="http://www.cplusplus.com/deque::resize">resize</a></td><td><a href="http://www.cplusplus.com/list::resize">resize</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td rowspan="4">element access</td><td><tt>front</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::front">front</a></td><td><a href="http://www.cplusplus.com/deque::front">front</a></td><td><a href="http://www.cplusplus.com/list::front">front</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td><tt>back</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::back">back</a></td><td><a href="http://www.cplusplus.com/deque::back">back</a></td><td><a href="http://www.cplusplus.com/list::back">back</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td><tt>operator[]</tt></td><td>*</td><td><a href="http://www.cplusplus.com/vector::operator[]">operator[] </a></td><td><a href="http://www.cplusplus.com/deque::operator[]">operator[] </a></td><td> </td><td> </td><td> </td><td><a href="http://www.cplusplus.com/map::operator[]">operator[] </a></td><td> </td><td><a href="http://www.cplusplus.com/bitset::operator[]">operator[] </a></td></tr>
+<tr><td><tt>at</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::at">at</a></td><td><a href="http://www.cplusplus.com/deque::at">at</a></td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td rowspan="9">modifiers</td><td><tt>assign</tt></td><td>O(n)</td><td><a href="http://www.cplusplus.com/vector::assign">assign</a></td><td><a href="http://www.cplusplus.com/deque::assign">assign</a></td><td><a href="http://www.cplusplus.com/list::assign">assign</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td><tt>insert</tt></td><td>*</td><td><a href="http://www.cplusplus.com/vector::insert">insert</a></td><td><a href="http://www.cplusplus.com/deque::insert">insert</a></td><td><a href="http://www.cplusplus.com/list::insert">insert</a></td><td><a href="http://www.cplusplus.com/set::insert">insert</a></td><td><a href="http://www.cplusplus.com/multiset::insert">insert</a></td><td><a href="http://www.cplusplus.com/map::insert">insert</a></td><td><a href="http://www.cplusplus.com/multimap::insert">insert</a></td><td> </td></tr>
+<tr><td><tt>erase</tt></td><td>*</td><td><a href="http://www.cplusplus.com/vector::erase">erase</a></td><td><a href="http://www.cplusplus.com/deque::erase">erase</a></td><td><a href="http://www.cplusplus.com/list::erase">erase</a></td><td><a href="http://www.cplusplus.com/set::erase">erase</a></td><td><a href="http://www.cplusplus.com/multiset::erase">erase</a></td><td><a href="http://www.cplusplus.com/map::erase">erase</a></td><td><a href="http://www.cplusplus.com/multimap::erase">erase</a></td><td> </td></tr>
+<tr><td><tt>swap</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::swap">swap</a></td><td><a href="http://www.cplusplus.com/deque::swap">swap</a></td><td><a href="http://www.cplusplus.com/list::swap">swap</a></td><td><a href="http://www.cplusplus.com/set::swap">swap</a></td><td><a href="http://www.cplusplus.com/multiset::swap">swap</a></td><td><a href="http://www.cplusplus.com/map::swap">swap</a></td><td><a href="http://www.cplusplus.com/multimap::swap">swap</a></td><td> </td></tr>
+<tr><td><tt>clear</tt></td><td>O(n)</td><td><a href="http://www.cplusplus.com/vector::clear">clear</a></td><td><a href="http://www.cplusplus.com/deque::clear">clear</a></td><td><a href="http://www.cplusplus.com/list::clear">clear</a></td><td><a href="http://www.cplusplus.com/set::clear">clear</a></td><td><a href="http://www.cplusplus.com/multiset::clear">clear</a></td><td><a href="http://www.cplusplus.com/map::clear">clear</a></td><td><a href="http://www.cplusplus.com/multimap::clear">clear</a></td><td> </td></tr>
+<tr><td><tt>push_front</tt></td><td>O(1)</td><td> </td><td><a href="http://www.cplusplus.com/deque::push_front">push_front</a></td><td><a href="http://www.cplusplus.com/list::push_front">push_front</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td><tt>pop_front</tt></td><td>O(1)</td><td> </td><td><a href="http://www.cplusplus.com/deque::pop_front">pop_front</a></td><td><a href="http://www.cplusplus.com/list::pop_front">pop_front</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td><tt>push_back</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::push_back">push_back</a></td><td><a href="http://www.cplusplus.com/deque::push_back">push_back</a></td><td><a href="http://www.cplusplus.com/list::push_back">push_back</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td><tt>pop_back</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/vector::pop_back">pop_back</a></td><td><a href="http://www.cplusplus.com/deque::pop_back">pop_back</a></td><td><a href="http://www.cplusplus.com/list::pop_back">pop_back</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td rowspan="2">observers</td><td><tt>key_comp</tt></td><td>O(1)</td><td> </td><td> </td><td> </td><td><a href="http://www.cplusplus.com/set::key_comp">key_comp</a></td><td><a href="http://www.cplusplus.com/multiset::key_comp">key_comp</a></td><td><a href="http://www.cplusplus.com/map::key_comp">key_comp</a></td><td><a href="http://www.cplusplus.com/multimap::key_comp">key_comp</a></td><td> </td></tr>
+<tr><td><tt>value_comp</tt></td><td>O(1)</td><td> </td><td> </td><td> </td><td><a href="http://www.cplusplus.com/set::value_comp">value_comp</a></td><td><a href="http://www.cplusplus.com/multiset::value_comp">value_comp</a></td><td><a href="http://www.cplusplus.com/map::value_comp">value_comp</a></td><td><a href="http://www.cplusplus.com/multimap::value_comp">value_comp</a></td><td> </td></tr>
+<tr><td rowspan="5">operations</td><td><tt>find</tt></td><td>O(log n)</td><td> </td><td> </td><td></td><td><a href="http://www.cplusplus.com/set::find">find</a></td><td><a href="http://www.cplusplus.com/multiset::find">find</a></td><td><a href="http://www.cplusplus.com/map::find">find</a></td><td><a href="http://www.cplusplus.com/multimap::find">find</a></td><td> </td></tr>
+<tr><td><tt>count</tt></td><td>O(log n)</td><td> </td><td> </td><td></td><td><a href="http://www.cplusplus.com/set::count">count</a></td><td><a href="http://www.cplusplus.com/multiset::count">count</a></td><td><a href="http://www.cplusplus.com/map::count">count</a></td><td><a href="http://www.cplusplus.com/multimap::count">count</a></td><td><a href="http://www.cplusplus.com/bitset::count">count</a></td></tr>
+<tr><td><tt>lower_bound</tt></td><td>O(log n)</td><td> </td><td> </td><td></td><td><a href="http://www.cplusplus.com/set::lower_bound">lower_bound</a></td><td><a href="http://www.cplusplus.com/multiset::lower_bound">lower_bound</a></td><td><a href="http://www.cplusplus.com/map::lower_bound">lower_bound</a></td><td><a href="http://www.cplusplus.com/multimap::lower_bound">lower_bound</a></td><td> </td></tr>
+<tr><td><tt>upper_bound</tt></td><td>O(log n)</td><td> </td><td> </td><td></td><td><a href="http://www.cplusplus.com/set::upper_bound">upper_bound</a></td><td><a href="http://www.cplusplus.com/multiset::upper_bound">upper_bound</a></td><td><a href="http://www.cplusplus.com/map::upper_bound">upper_bound</a></td><td><a href="http://www.cplusplus.com/multimap::upper_bound">upper_bound</a></td><td> </td></tr>
+<tr><td><tt>equal_range</tt></td><td>O(log n)</td><td> </td><td> </td><td></td><td><a href="http://www.cplusplus.com/set::equal_range">equal_range</a></td><td><a href="http://www.cplusplus.com/multiset::equal_range">equal_range</a></td><td><a href="http://www.cplusplus.com/map::equal_range">equal_range</a></td><td><a href="http://www.cplusplus.com/multimap::equal_range">equal_range</a></td><td> </td></tr>
+<tr><td colspan="2"><i>unique members</i></td><td> </td><td><a href="http://www.cplusplus.com/vector::capacity">capacity</a> <br>
+<a href="http://www.cplusplus.com/vector::reserve">reserve</a></td><td> </td><td><a href="http://www.cplusplus.com/list::splice">splice</a> <br>
+<a href="http://www.cplusplus.com/list::remove">remove</a> <br>
+<a href="http://www.cplusplus.com/list::remove_if">remove_if</a> <br>
+<a href="http://www.cplusplus.com/list::unique">unique</a> <br>
+<a href="http://www.cplusplus.com/list::merge">merge</a> <br>
+<a href="http://www.cplusplus.com/list::sort">sort</a> <br>
+<a href="http://www.cplusplus.com/list::reverse">reverse</a></td><td> </td><td> </td><td> </td><td> </td><td><a href="http://www.cplusplus.com/bitset::set">set</a> <br>
+<a href="http://www.cplusplus.com/bitset::reset">reset</a> <br>
+<a href="http://www.cplusplus.com/bitset::flip">flip</a> <br>
+<a href="http://www.cplusplus.com/bitset::to_ulong">to_ulong</a> <br>
+<a href="http://www.cplusplus.com/bitset::to_string">to_string</a> <br>
+<a href="http://www.cplusplus.com/bitset::test">test</a> <br>
+<a href="http://www.cplusplus.com/bitset::any">any</a> <br>
+<a href="http://www.cplusplus.com/bitset::none">none</a></td>
+</tr>
+</table>
+Amortized complexity shown. Legend: O(1) constant &lt; O(log n) logarithmic &lt; O(n) linear; *=depends on container<br>
+<br>
+<b>Container adaptors</b>:<br>
+<table class="boxed">
+<tr><td colspan="3"></td><th colspan="3">Container Adaptors</th></tr>
+<tr><td colspan="3">Headers</td><th><tt>&lt;stack&gt;</tt></th><th colspan="2"><tt>&lt;queue&gt;</tt></th></tr>
+<tr><td colspan="3">Members</td><th><a href="http://www.cplusplus.com/stack">stack</a></th><th><a href="http://www.cplusplus.com/queue">queue</a></th><th><a href="http://www.cplusplus.com/priority_queue">priority_queue</a></th></tr>
+<tr><td> </td><td><i>constructor</i></td><td>*</td><td><a href="http://www.cplusplus.com/stack::stack">constructor</a></td><td><a href="http://www.cplusplus.com/queue::queue">constructor</a></td><td><a href="http://www.cplusplus.com/priority_queue::priority_queue">constructor</a></td></tr>
+<tr><td rowspan="2">capacity</td><td><tt>size</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/stack::size">size</a></td><td><a href="http://www.cplusplus.com/queue::size">size</a></td><td><a href="http://www.cplusplus.com/priority_queue::size">size</a></td></tr>
+<tr><td><tt>empty</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/stack::empty">empty</a></td><td><a href="http://www.cplusplus.com/queue::empty">empty</a></td><td><a href="http://www.cplusplus.com/priority_queue::empty">empty</a></td></tr>
+<tr><td rowspan="3">element access</td><td><tt>front</tt></td><td>O(1)</td><td> </td><td><a href="http://www.cplusplus.com/queue::front">front</a></td><td> </td></tr>
+<tr><td><tt>back</tt></td><td>O(1)</td><td> </td><td><a href="http://www.cplusplus.com/queue::back">back</a></td><td> </td></tr>
+<tr><td><tt>top</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/stack::top">top</a></td><td> </td><td><a href="http://www.cplusplus.com/priority_queue::top">top</a></td></tr>
+<tr><td rowspan="2">modifiers</td><td><tt>push</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/stack::push">push</a></td><td><a href="http://www.cplusplus.com/queue::push">push</a></td><td><a href="http://www.cplusplus.com/priority_queue::push">push</a></td></tr>
+<tr><td><tt>pop</tt></td><td>O(1)</td><td><a href="http://www.cplusplus.com/stack::pop">pop</a></td><td><a href="http://www.cplusplus.com/queue::pop">pop</a></td><td><a href="http://www.cplusplus.com/priority_queue::pop">pop</a></td></tr>
+</table>
+</div><div id="CH_bb"></div></div><div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="index.html">STL Containers</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="array/index.html"><span>array</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="bitset/index.html"><span>bitset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="deque/index.html"><span>deque</span></a></li>
+<li class="cpp11 folder"><a href="forward_list/index.html"><span>forward_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="list/index.html"><span>list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="map/index.html"><span>map</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="multimap/index.html"><span>multimap</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="multiset/index.html"><span>multiset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="priority_queue/index.html"><span>priority_queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="queue/index.html"><span>queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="set/index.html"><span>set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="stack/index.html"><span>stack</span></a></li>
+<li class="cpp11 folder"><a href="unordered_map/index.html"><span>unordered_map</span></a></li>
+<li class="cpp11 folder"><a href="unordered_multimap/index.html"><span>unordered_multimap</span></a></li>
+<li class="cpp11 folder"><a href="unordered_multiset/index.html"><span>unordered_multiset</span></a></li>
+<li class="cpp11 folder"><a href="unordered_set/index.html"><span>unordered_set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="vector/index.html"><span>vector</span></a></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstl%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			el.appendChild(btn('New Page','New Page','new','../new64fb.html?a=stl'));
+			el.appendChild(btn('Edit Page','Edit Page','edit','../edit64fb.html?a=stl'));
+			
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../delete64fb.html?a=stl'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:28:06 GMT -->
+</html>

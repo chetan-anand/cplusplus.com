@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/string/string/insert/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:15:39 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>string::insert - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">Strings library</a></li>
+<li><a href="../index.html">string</a></li>
+<li class="here">insert</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">public member function</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">string</a>::insert</h1>
+<div id="I_file" title="header &lt;string&gt;">&lt;string&gt;</div>
+<div class="C_prototype"><pre> string&amp; insert ( size_t pos1, const string&amp; str ); string&amp; insert ( size_t pos1, const string&amp; str, size_t pos2, size_t n ); string&amp; insert ( size_t pos1, const char* s, size_t n); string&amp; insert ( size_t pos1, const char* s ); string&amp; insert ( size_t pos1, size_t n, char c );iterator insert ( iterator p, char c );    void insert ( iterator p, size_t n, char c );template&lt;class InputIterator&gt;    void insert ( iterator p, InputIterator first, InputIterator last );</pre></div><div id="I_description">Insert into string</div>
+The current string content is extended by inserting some additional content at a specific location within the string content (this position is determined by either <i>pos1</i> or <i>p</i>, depending on the function version used).<br>
+<br>
+The arguments passed to the function determine the content that is inserted:<br>
+<br>
+<dl>
+<dt>string& insert ( size_t pos1, const string& str );</dt>
+<dd>Inserts a copy of the entire <a href="http://www.cplusplus.com/string">string</a> object <i>str</i> at character position <i>pos1</i>.</dd>
+<dt>string& insert ( size_t pos1, const string& str, size_t pos2, size_t n );</dt>
+<dd>Inserts a copy of a substring of <i>str</i> at character position <i>pos1</i>. The substring is the portion of <i>str</i> that begins at the character position <i>pos2</i> and takes up to <i>n</i> characters (it takes less than <i>n</i> if the end of <i>str</i> is reached before).</dd>
+<dt>string& insert ( size_t pos1, const char * s, size_t n );</dt>
+<dd>Inserts at the character position <i>pos1</i>, a copy of the string formed by the first <i>n</i> characters in the array of characters pointed by <i>s</i>.</dd>
+<dt>string& insert ( size_t pos1, const char * s );</dt>
+<dd>Inserts  at character position <i>pos1</i>, a copy of the string formed by the null-terminated character sequence (C string) pointed by <i>s</i>. The length of this character sequence is determined by the first ocurrence of a null character (as determined by <a href="http://www.cplusplus.com/char_traits">traits</a>.length(s)).</dd>
+<dt>string& insert ( size_t pos1, size_t n, char c );</dt>
+<dd>Inserts a string formed by a repetition of character <i>c</i>, <i>n</i> times, at the character position <i>pos1</i>.</dd>
+<dt>iterator insert ( iterator p, char c );</dt>
+<dd>Inserts a copy of character <i>c</i> at the position referred by iterator <i>p</i> and returns an iterator referring to this position where it has been inserted.</dd>
+<dt>void insert ( iterator p, size_t n, char c );</dt>
+<dd>Inserts a string formed by the repetition of character <i>c</i>, <i>n</i> times, at the position referred by iterator <i>p</i>.</dd>
+<dt>template&lt;class InputIterator&gt; void insert (iterator p, InputIterator first, InputIterator last);</dt>
+<dd>Inserts at the internal position referred by <i>p</i> the content made up of the characters that go from the element referred by iterator <i>first</i> to the element right before the one referred by iterator <i>last</i>.</dd>
+</dl>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Another object of class <a href="http://www.cplusplus.com/string">string</a> whose content is entirely or partially inserted into the content.</dd>
+<dt>pos1</dt>
+<dd>Position within the string where the additional content is to be inserted. Notice that the first position has a value of <tt>0</tt>, not <tt>1</tt>.<br>
+If the position passed is past the end of the string, an <tt>out_of_range</tt> exception is thrown. </dd>
+<dt>pos2</dt>
+<dd>Starting position of the substring of <i>str</i> that has the content to be inserted. Notice that the first position has also a value of <tt>0</tt>.<br>
+If the position passed is past the end of <i>str</i>, an <tt>out_of_range</tt> exception is thrown.</dd>
+<dt>n</dt>
+<dd>Number of characters to insert.</dd>
+<dt>s</dt>
+<dd>Array with a sequence of characters.<br>
+In the third member function version, the length is determined by parameter <i>n</i>, even including null characters in the content.<br>
+By contrast, in the fourth member version, <i>s</i> is a null-terminated character, and therefore its length is determined only by the first occurrence of a null character.</dd>
+<dt>c</dt>
+<dd>Character value to be used to be repeated <i>n</i> times as the inserted content.</dd>
+<dt>p</dt>
+<dd>Iterator referring to an element part of the string, where the additional content is to be inserted.<br>
+This is an iterator of the <tt>string::iterator</tt> member type, which is a compiler specific iterator type suitable to iterate through the elements of this object.</dd>
+<dt>start</dt>
+<dd>Iterator referring to the beginning of a sequence of characters whose content is to be inserted in the string.</dd>
+<dt>last</dt>
+<dd>Iterator referring to the past-the-end element of the sequence of characters to be inserted.</dd>
+</dl>
+<br>
+<h3>Return Value</h3>
+<tt>*this</tt>, for the versions returning <tt>string&</tt>, and an interator referring to the insertion position for the version returning an <tt>iterator</tt>.<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br></code></pre></td>
+<td class="source"><pre><code><cite>// inserting into a string</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>int</var> main ()
+{
+  string str=<kbd>"to be question"</kbd>;
+  string str2=<kbd>"the "</kbd>;
+  string str3=<kbd>"or not to be"</kbd>;
+  string::iterator it;
+
+  <cite>// used in the same order as described above:</cite>
+  str.insert(6,str2);                 <cite>// to be (the )question</cite>
+  str.insert(6,str3,3,4);             <cite>// to be (not )the question</cite>
+  str.insert(10,<kbd>"that is cool"</kbd>,8);    <cite>// to be not (that is )the question</cite>
+  str.insert(10,<kbd>"to be "</kbd>);            <cite>// to be not (to be )that is the question</cite>
+  str.insert(15,1,<kbd>':'</kbd>);               <cite>// to be not to be(:) that is the question</cite>
+  it = str.insert(str.begin()+5,<kbd>','</kbd>); <cite>// to be(,) not to be: that is the question</cite>
+  str.insert (str.end(),3,<kbd>'.'</kbd>);       <cite>// to be, not to be: that is the question(...)</cite>
+  str.insert (it+2,str3.begin(),str3.begin()+3); <cite>// (or )</cite>
+
+  cout &lt;&lt; str &lt;&lt; endl;
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>to be, or not to be: that is the question...
+</samp></pre></td></tr></table></div>
+<br>
+<h3>Basic template member declarations</h3>
+( basic_string&lt;charT,traits,Allocator&gt; )<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><var>typedef</var> <var>typename</var> Allocator::size_type size_type;
+basic_string&amp; insert ( size_type pos1, <var>const</var> basic_string&amp; str );
+basic_string&amp; insert ( size_type pos1, <var>const</var> basic_string&amp; str,
+                       size_type pos2, size_type n );
+basic_string&amp; insert ( size_type pos1, <var>const</var> charT* s, size_type n );
+basic_string&amp; insert ( size_type pos1, <var>const</var> charT* s );
+basic_string&amp; insert ( size_type pos1, size_type n, charT c );
+     iterator insert ( iterator p, charT c );
+         <var>void</var> insert ( iterator p, size_type n, charT c );
+<var>template</var> &lt;<var>class</var> InputIterator&gt;
+         <var>void</var> insert ( iterator p, 
+                       InputIterator first, InputIterator last );</code></pre></td></tr></table></div>
+<br>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../append/index.html"><b>string::append</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../replace/index.html"><b>string::replace</b></a></dt><dd>Replace part of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../substr/index.html"><b>string::substr</b></a></dt><dd>Generate substring <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../operator%3d/index.html"><b>string::operator=</b></a></dt><dd>String assignment <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../operator%2b%3d/index.html"><b>string::operator+=</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">Strings library</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../char_traits/index.html"><span>char_traits</span></a></li>
+<li class="C_Collapsable"><h4>classes:</h4><ul>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>string</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>global functions:</h4><ul>
+<li class="cpp98 cpp11"><a href="../../getline/index.html"><span>getline</span></a></li>
+<li class="cpp98 cpp11"><a href="../../operator%2b/index.html"><span>operator+</span></a></li>
+<li class="cpp98 cpp11"><a href="../../operator__/index.html"><span>operator&lt;&lt;</span></a></li>
+<li class="cpp98 cpp11"><a href="../../operator__/index-2.html"><span>operator&gt;&gt;</span></a></li>
+<li class="cpp98 cpp11"><a href="../../operators/index.html"><span>comparison operators</span></a></li>
+<li class="cpp98 cpp11"><a href="../../swap/index.html"><span>swap</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">string</a></b></h3>
+<ul>
+<li class="cpp98 cpp11"><a href="../string/index.html"><span>string::string</span></a></li>
+<li class="C_Collapsable"><h4>member constants:</h4><ul>
+<li class="cpp98 cpp11"><a href="../npos/index.html"><span>string::npos</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="cpp98 cpp11"><a href="../append/index.html"><span>string::append</span></a></li>
+<li class="cpp98 cpp11"><a href="../assign/index.html"><span>string::assign</span></a></li>
+<li class="cpp98 cpp11"><a href="../at/index.html"><span>string::at</span></a></li>
+<li class="cpp98 cpp11"><a href="../begin/index.html"><span>string::begin</span></a></li>
+<li class="cpp98 cpp11"><a href="../capacity/index.html"><span>string::capacity</span></a></li>
+<li class="cpp98 cpp11"><a href="../clear/index.html"><span>string::clear</span></a></li>
+<li class="cpp98 cpp11"><a href="../compare/index.html"><span>string::compare</span></a></li>
+<li class="cpp98 cpp11"><a href="../copy/index.html"><span>string::copy</span></a></li>
+<li class="cpp98 cpp11"><a href="../c_str/index.html"><span>string::c_str</span></a></li>
+<li class="cpp98 cpp11"><a href="../data/index.html"><span>string::data</span></a></li>
+<li class="cpp98 cpp11"><a href="../empty/index.html"><span>string::empty</span></a></li>
+<li class="cpp98 cpp11"><a href="../end/index.html"><span>string::end</span></a></li>
+<li class="cpp98 cpp11"><a href="../erase/index.html"><span>string::erase</span></a></li>
+<li class="cpp98 cpp11"><a href="../find/index.html"><span>string::find</span></a></li>
+<li class="cpp98 cpp11"><a href="../find_first_not_of/index.html"><span>string::find_first_not_of</span></a></li>
+<li class="cpp98 cpp11"><a href="../find_first_of/index.html"><span>string::find_first_of</span></a></li>
+<li class="cpp98 cpp11"><a href="../find_last_not_of/index.html"><span>string::find_last_not_of</span></a></li>
+<li class="cpp98 cpp11"><a href="../find_last_of/index.html"><span>string::find_last_of</span></a></li>
+<li class="cpp98 cpp11"><a href="../get_allocator/index.html"><span>string::get_allocator</span></a></li>
+<li class="cpp98 cpp11 selected"><a href="index.html"><span>string::insert</span></a></li>
+<li class="cpp98 cpp11"><a href="../length/index.html"><span>string::length</span></a></li>
+<li class="cpp98 cpp11"><a href="../max_size/index.html"><span>string::max_size</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%2b%3d/index.html"><span>string::operator+=</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%3d/index.html"><span>string::operator=</span></a></li>
+<li class="cpp98 cpp11"><a href="../operator%5b%5d/index.html"><span>string::operator[]</span></a></li>
+<li class="cpp98 cpp11"><a href="../push_back/index.html"><span>string::push_back</span></a></li>
+<li class="cpp98 cpp11"><a href="../rbegin/index.html"><span>string::rbegin</span></a></li>
+<li class="cpp98 cpp11"><a href="../rend/index.html"><span>string::rend</span></a></li>
+<li class="cpp98 cpp11"><a href="../replace/index.html"><span>string::replace</span></a></li>
+<li class="cpp98 cpp11"><a href="../reserve/index.html"><span>string::reserve</span></a></li>
+<li class="cpp98 cpp11"><a href="../resize/index.html"><span>string::resize</span></a></li>
+<li class="cpp98 cpp11"><a href="../rfind/index.html"><span>string::rfind</span></a></li>
+<li class="cpp98 cpp11"><a href="../size/index.html"><span>string::size</span></a></li>
+<li class="cpp98 cpp11"><a href="../substr/index.html"><span>string::substr</span></a></li>
+<li class="cpp98 cpp11"><a href="../swap/index.html"><span>string::swap</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstring%2Fstring%2Finsert%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit931a.html?a=string+string+insert'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete931a.html?a=string+string+insert'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/string/string/insert/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:15:40 GMT -->
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/locale/collate/hash/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:18:11 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>collate::hash - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../../v311/main.css">
+<script src="../../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../../index.html">Reference</a></li>
+<li><a href="../../../index.html">Miscellaneous</a></li>
+<li><a href="../../index.html">locale</a></li>
+<li><a href="../index.html">collate</a></li>
+<li class="here">hash</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">public member function</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">collate</a>::hash</h1>
+<div id="I_file" title="header &lt;locale&gt;">&lt;locale&gt;</div>
+<div class="C_prototype"><pre>long hash (const charT* low, const charT* high) const;</pre></div><div id="I_description">Get hash value</div>
+Returns the hash value of the string corresponding to the character sequence <i>[low,high)</i>.<br>
+<br>
+A hash for a string is a value that uniquely<sup>*</sup> identifies the content of the string, so that two strings with the same hash value, would compare equal by <a href="http://www.cplusplus.com/collate::compare">collate::compare</a>, and two strings with different hash values would compare not equal.<br>
+<br>
+Thus, two strings can be easily compared for equality by simply comparing their hash values, which are of an integer type.<br>
+<br>
+During its operation, the version of this function in the generic template simply calls the virtual protected member <a href="http://www.cplusplus.com/collate::do_transform">do_transform</a>, which is the member function in charge of performing the actions described above.<br>
+<br>
+<sup>*</sup> The uniqueness is relative to the possible values the hash type can take (in this case <a href="http://www.cplusplus.com/numeric_limits">numeric_limits&lt;unsigned long&gt;::max()</a>). Therefore, there is a very small probability that two strings with different contents have the same hash (generally, one in billions).<br>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>low, high</dt>
+<dd>Pointers to the beginning and ending characters of the sequence. The range used is <tt>[low,high)</tt>, which contains all the characters between <i>low</i> and <i>high</i>, including the character pointed by <i>low</i> but not the character pointed by <i>high</i>.<br>
+<tt>charT</tt> is the template parameter (i.e., the facet's character type).</dd>
+</dl>
+<br>
+<br>
+<h3>Return value</h3>
+An integer value that identifies the content of the entire character sequence.<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br></code></pre></td>
+<td class="source"><pre><code><cite>// collate::hash example</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;locale&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>int</var> main ()
+{
+  string myberry = <kbd>"strawberry"</kbd>;
+  string yourberry;
+
+  locale loc;                 <cite>// the "C" locale</cite>
+
+  <var>const</var> collate&lt;<var>char</var>&gt;&amp; coll = use_facet&lt;collate&lt;<var>char</var>&gt; &gt;(loc);
+
+  <var>long</var> myhash = coll.hash(myberry.data(),myberry.data()+myberry.length());
+
+  cout &lt;&lt; <kbd>"Please, enter your favorite berry:"</kbd>;
+  getline (cin,yourberry);
+
+  <var>long</var> yourhash = coll.hash(yourberry.data(),yourberry.data()+yourberry.length());
+
+  <var>if</var> (myhash == yourhash)
+    cout &lt;&lt; <kbd>"Mine too!\n"</kbd>;
+  <var>else</var>
+    cout &lt;&lt; <kbd>"I prefer strawberries...\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Please enter your favorite berry: strawberry
+Mine too!
+</samp></pre></td></tr></table></div>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../compare/index.html"><b>collate::compare</b></a></dt><dd>Compare character sequences <span class="typ">(public member function)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../../index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../../index.html">Miscellaneous</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../../chrono/index.html"><span>chrono</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../complex/index.html"><span>complex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../exception/index.html"><span>exception</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../functional/index.html"><span>functional</span></a></li>
+<li class="cpp11 folder"><a href="../../../initializer_list/index.html"><span>initializer_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iterator/index.html"><span>iterator</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../limits/index.html"><span>limits</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>locale</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../memory/index.html"><span>memory</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../new/index.html"><span>new</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../numeric/index.html"><span>numeric</span></a></li>
+<li class="cpp11 folder"><a href="../../../random/index.html"><span>random</span></a></li>
+<li class="cpp11 folder"><a href="../../../ratio/index.html"><span>ratio</span></a></li>
+<li class="cpp11 folder"><a href="../../../regex/index.html"><span>regex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stdexcept/index.html"><span>stdexcept</span></a></li>
+<li class="cpp11 folder"><a href="../../../system_error/index.html"><span>system_error</span></a></li>
+<li class="cpp11 folder"><a href="../../../tuple/index.html"><span>tuple</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../typeinfo/index.html"><span>typeinfo</span></a></li>
+<li class="cpp11 folder"><a href="../../../type_traits/index.html"><span>type_traits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../utility/index.html"><span>utility</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../valarray/index.html"><span>valarray</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">locale</a></b></h3>
+<ul>
+<li class="cpp98 cpp11"><a href="../../has_facet/index.html"><span>has_facet</span></a></li>
+<li class="cpp98 cpp11"><a href="../../isalnum/index.html"><span>isalnum</span></a></li>
+<li class="cpp98 cpp11"><a href="../../isalpha/index.html"><span>isalpha</span></a></li>
+<li class="cpp98 cpp11"><a href="../../iscntrl/index.html"><span>iscntrl</span></a></li>
+<li class="cpp98 cpp11"><a href="../../isdigit/index.html"><span>isdigit</span></a></li>
+<li class="cpp98 cpp11"><a href="../../isgraph/index.html"><span>isgraph</span></a></li>
+<li class="cpp98 cpp11"><a href="../../islower/index.html"><span>islower</span></a></li>
+<li class="cpp98 cpp11"><a href="../../isprint/index.html"><span>isprint</span></a></li>
+<li class="cpp98 cpp11"><a href="../../ispunct/index.html"><span>ispunct</span></a></li>
+<li class="cpp98 cpp11"><a href="../../isspace/index.html"><span>isspace</span></a></li>
+<li class="cpp98 cpp11"><a href="../../isupper/index.html"><span>isupper</span></a></li>
+<li class="cpp98 cpp11"><a href="../../isxdigit/index.html"><span>isxdigit</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../locale/index.html"><span>locale</span></a></li>
+<li class="cpp98 cpp11"><a href="../../tolower/index.html"><span>tolower</span></a></li>
+<li class="cpp98 cpp11"><a href="../../toupper/index.html"><span>toupper</span></a></li>
+<li class="cpp98 cpp11"><a href="../../use_facet/index.html"><span>use_facet</span></a></li>
+<li class="C_Collapsable"><h4>standard facets:</h4><ul>
+<li class="cpp98 cpp11 folder"><a href="../../codecvt/index.html"><span>codecvt</span></a></li>
+<li class="cpp98 cpp11"><a href="../../codecvt_base/index.html"><span>codecvt_base</span></a></li>
+<li class="cpp98 cpp11"><a href="../../codecvt_byname/index.html"><span>codecvt_byname</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>collate</span></a></li>
+<li class="cpp98 cpp11"><a href="../../collate_byname/index.html"><span>collate_byname</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../ctype/index.html"><span>ctype</span></a></li>
+<li class="cpp98 cpp11"><a href="../../ctype_base/index.html"><span>ctype_base</span></a></li>
+<li class="cpp98 cpp11"><a href="../../ctype_byname/index.html"><span>ctype_byname</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../messages/index.html"><span>messages</span></a></li>
+<li class="cpp98 cpp11"><a href="../../messages_base/index.html"><span>messages_base</span></a></li>
+<li class="cpp98 cpp11"><a href="../../messages_byname/index.html"><span>messages_byname</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../moneypunct/index.html"><span>moneypunct</span></a></li>
+<li class="cpp98 cpp11"><a href="../../moneypunct_byname/index.html"><span>moneypunct_byname</span></a></li>
+<li class="cpp98 cpp11"><a href="../../money_base/index.html"><span>money_base</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../money_get/index.html"><span>money_get</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../money_put/index.html"><span>money_put</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../numpunct/index.html"><span>numpunct</span></a></li>
+<li class="cpp98 cpp11"><a href="../../numpunct_byname/index.html"><span>numpunct_byname</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../num_get/index.html"><span>num_get</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../num_put/index.html"><span>num_put</span></a></li>
+<li class="cpp98 cpp11"><a href="../../time_base/index.html"><span>time_base</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../time_get/index.html"><span>time_get</span></a></li>
+<li class="cpp98 cpp11"><a href="../../time_get_byname/index.html"><span>time_get_byname</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../time_put/index.html"><span>time_put</span></a></li>
+<li class="cpp98 cpp11"><a href="../../time_put_byname/index.html"><span>time_put_byname</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">collate</a></b></h3>
+<ul>
+<li class="cpp98 cpp11"><a href="../collate/index.html"><span>collate::collate</span></a></li>
+<li class="C_Collapsable"><h4>public member functions:</h4><ul>
+<li class="cpp98 cpp11"><a href="../compare/index.html"><span>collate::compare</span></a></li>
+<li class="cpp98 cpp11 selected"><a href="index.html"><span>collate::hash</span></a></li>
+<li class="cpp98 cpp11"><a href="../transform/index.html"><span>collate::transform</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>public member types:</h4><ul>
+<li class="cpp98 cpp11"><a href="../char_type/index.html"><span>collate::char_type</span></a></li>
+<li class="cpp98 cpp11"><a href="../string_type/index.html"><span>collate::string_type</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>protected members:</h4><ul>
+<li class="cpp98 cpp11"><a href="../do_compare/index.html"><span>collate::do_compare</span></a></li>
+<li class="cpp98 cpp11"><a href="../do_hash/index.html"><span>collate::do_hash</span></a></li>
+<li class="cpp98 cpp11"><a href="../do_transform/index.html"><span>collate::do_transform</span></a></li>
+<li class="cpp98 cpp11"><a href="../_collate/index.html"><span>collate::~collate</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstd%2Flocale%2Fcollate%2Fhash%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../../edit72fd.html?a=std+locale+collate+hash'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../../delete72fd.html?a=std+locale+collate+hash'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/locale/collate/hash/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:18:12 GMT -->
+</html>

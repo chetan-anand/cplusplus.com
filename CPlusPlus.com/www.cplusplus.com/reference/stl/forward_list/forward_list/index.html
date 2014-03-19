@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/forward_list/forward_list/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:20:53 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>forward_list::forward_list - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">STL Containers</a></li>
+<li><a href="../index.html">forward_list</a></li>
+<li class="here">forward_list</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">public member function</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">forward_list</a>::forward_list<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div id="I_file" title="header &lt;forward_list&gt;">&lt;forward_list&gt;</div>
+<div class="C_prototype"><table><tr class="odd"><th>empty (default) (1)</th><td><pre>explicit forward_list ( const allocator_type&amp; alloc = allocator_type() );</pre></td></tr><tr class="even"><th>copy (2)</th><td><pre>forward_list ( const forward_list&amp; fwdlst );forward_list ( const forward_list&amp; fwdlst, const allocator_type&amp; alloc );</pre></td></tr><tr class="odd"><th>move (3)</th><td><pre>forward_list ( forward_list&amp;&amp; fwdlst );forward_list ( forward_list&amp;&amp; fwdlst, const allocator_type&amp; alloc );</pre></td></tr><tr class="even"><th>size (4)</th><td><pre>explicit forward_list ( size_type n );</pre></td></tr><tr class="odd"><th>fill (5)</th><td><pre>explicit forward_list ( size_type n, const value_type&amp; val, const allocator_type&amp; alloc = allocator_type() );</pre></td></tr><tr class="even"><th>range (6)</th><td><pre>template &lt; class InputIterator &gt;         forward_list ( InputIterator first, InputIterator last, const allocator_type&amp; alloc = allocator_type() );</pre></td></tr><tr class="odd"><th>initializer list (7)</th><td><pre>forward_list ( initializer_list&lt;value_type&gt; il, const allocator_type&amp; alloc = allocator_type() );</pre></td></tr></table></div><div id="I_description">Construct forward_list object</div>
+<section id="description">
+Constructs a <a href="http://www.cplusplus.com/forward_list">forward_list</a> container object, initializing its contents depending on the constructor version used:<br>
+<br>
+<dl>
+<dt>(1) empty container constructor (default constructor)</dt>
+<dd>Constructs an empty container, with no elements and a <a href="http://www.cplusplus.com/forward_list::size">size</a> of zero.</dd>
+<dt>(2) copy constructors</dt>
+<dd>The object is initialized to have the same contents and properties as the <i>fwdlst</i> <a href="http://www.cplusplus.com/forward_list">forward_list</a> object.</dd>
+<dt>(3) move constructors</dt>
+<dd>The object acquires the contents of the rvalue <i>fwdlst</i>.</dd>
+<dt>(4) size constructor</dt>
+<dd>Initializes the container object with a <a href="http://www.cplusplus.com/forward_list::size">size</a> of <i>n</i> elements. Each object is default-constructed.</dd>
+<dt>(5) fill constructor</dt>
+<dd>Initializes the container object with a <a href="http://www.cplusplus.com/forward_list::size">size</a> of <i>n</i> elements, filled with copies of <i>val</i>.</dd>
+<dt>(6) range constructor</dt>
+<dd>Constructs a <a href="http://www.cplusplus.com/forward_list">forward_list</a> object containing copies of each of the elements in the range <tt>[first,last)</tt>, in the same order.</dd>
+<dt>(7) initializer list constructor</dt>
+<dd>Initializes the container with the contents of the list.</dd>
+</dl>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>alloc</dt>
+<dd>Allocator object to be used instead of constructing a new one.<br>
+For class instantiations using their version of the default <a href="http://www.cplusplus.com/allocator">allocator</a> class template, this parameter is not relevant.<br>
+Member type <tt>allocator_type</tt> is defined in <a href="http://www.cplusplus.com/forward_list">forward_list</a> as an alias of its second template parameter (<tt>Alloc</tt>).</dd>
+<dt>fwdlst</dt>
+<dd>Another <a href="http://www.cplusplus.com/forward_list">forward_list</a> object of the same type (with the same class template arguments), whose contents are either copied or moved.<br>
+</dd>
+<dt>n</dt>
+<dd>Initial container size (i.e., the number of elements in the container at construction).<br>
+Member type <tt>size_type</tt> is an unsigned integral type.</dd>
+<dt>val</dt>
+<dd>Value to fill the container with. Each of the <i>n</i> elements in the container will be initialized to a copy of this object.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/forward_list">forward_list</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+<dt>first, last</dt>
+<dd><a href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions in a range. The range used is <tt>[first,last)</tt>, which includes all the elements between <i>first</i> and <i>last</i>, including the element pointed by <i>first</i> but not the element pointed by <i>last</i>.<br>
+The function template type can be any type of <a href="http://www.cplusplus.com/InputIterator">input iterator</a>.<br>
+</dd>
+<dt>il</dt>
+<dd>An <a href="http://www.cplusplus.com/initializer_list">initializer_list</a> object.<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/forward_list">forward_list</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br></code></pre></td>
+<td class="source"><pre><code><cite>// forward_list constructors</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;forward_list&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <cite>// constructors used in the same order as described above:</cite>
+
+  std::forward_list&lt;<var>int</var>&gt; first;                      <cite>// default: empty</cite>
+  std::cout &lt;&lt; <kbd>"first:"</kbd>; <var>for</var> (<var>int</var>&amp; x: first) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x; std::cout &lt;&lt; std::endl;
+
+  std::forward_list&lt;<var>int</var>&gt; second (4);                 <cite>// fill: 4 "default-constructed" int's</cite>
+  std::cout &lt;&lt; <kbd>"second:"</kbd>; <var>for</var> (<var>int</var>&amp; x: second) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x; std::cout &lt;&lt; std::endl;
+
+  std::forward_list&lt;<var>int</var>&gt; third (3,77);               <cite>// fill: 3 sevety-sevens</cite>
+  std::cout &lt;&lt; <kbd>"third:"</kbd>; <var>for</var> (<var>int</var>&amp; x: third) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x; std::cout &lt;&lt; std::endl;
+
+  std::forward_list&lt;<var>int</var>&gt; fourth (third.begin(), third.end()); <cite>// range initialization</cite>
+  std::cout &lt;&lt; <kbd>"fourth:"</kbd>; <var>for</var> (<var>int</var>&amp; x: fourth) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x; std::cout &lt;&lt; std::endl;
+
+  std::forward_list&lt;<var>int</var>&gt; fifth (fourth);             <cite>// copy constructor</cite>
+  std::cout &lt;&lt; <kbd>"fifth:"</kbd>; <var>for</var> (<var>int</var>&amp; x: fifth) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x; std::cout &lt;&lt; std::endl;
+
+  std::forward_list&lt;<var>int</var>&gt; sixth (std::move(fifth));   <cite>// move ctor. (fifth wasted)</cite>
+  std::cout &lt;&lt; <kbd>"sixth:"</kbd>; <var>for</var> (<var>int</var>&amp; x: sixth) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x; std::cout &lt;&lt; std::endl;
+
+  std::forward_list&lt;<var>int</var>&gt; seventh = {3, 52, 25, 90};  <cite>// initializer_list constructor</cite>
+  std::cout &lt;&lt; <kbd>"seventh:"</kbd>; <var>for</var> (<var>int</var>&amp; x: seventh) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x; std::cout &lt;&lt; std::endl;
+
+  std::cout &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>forward_list constructor examples:
+first:
+second 0 0 0 0
+third: 77 77 77
+fourth: 77 77 77
+fifth: 77 77 77
+sixth: 77 77 77
+seventh: 3 52 25 90
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+For the <i>default constructor (1)</i>, constant.<br>
+For the <i>copy constructors (2)</i>, linear in <i>fwdlst</i>'s <a href="http://www.cplusplus.com/forward_list::size">size</a> (copy constructions).<br>
+For the <i>move constructors (3)</i>, constant.<br>
+For the <i>size constructor (4)</i>, linear in <i>n</i> (default constructions).<br>
+For the <i>fill constructor (5)</i>, linear in <i>n</i> (copy constructions).<br>
+For the <i>range constructor (6)</i>, linear in the distance between the iterators (copy constructions).<br>
+For the <i>initializer list constructor (7)</i>, linear in the length of the initializer list (copy constructions).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../assign/index.html"><b>forward_list::assign</b></a></dt><dd>Assign content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../resize/index.html"><b>forward_list::resize</b></a></dt><dd>Change size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../clear/index.html"><b>forward_list::clear</b></a></dt><dd>Clear content <span class="typ">(public member function)</span></dd></dl>
+</section>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">STL Containers</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../../array/index.html"><span>array</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../bitset/index.html"><span>bitset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../deque/index.html"><span>deque</span></a></li>
+<li class="cpp11 selected folder"><a href="../index.html"><span>forward_list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../list/index.html"><span>list</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../map/index.html"><span>map</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../multimap/index.html"><span>multimap</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../multiset/index.html"><span>multiset</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../priority_queue/index.html"><span>priority_queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../queue/index.html"><span>queue</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../set/index.html"><span>set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stack/index.html"><span>stack</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_map/index.html"><span>unordered_map</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_multimap/index.html"><span>unordered_multimap</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_multiset/index.html"><span>unordered_multiset</span></a></li>
+<li class="cpp11 folder"><a href="../../unordered_set/index.html"><span>unordered_set</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../vector/index.html"><span>vector</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp11">
+<h3><b><a href="../index.html">forward_list</a></b></h3>
+<ul>
+<li class="cpp11 selected"><a href="index.html"><span>forward_list::forward_list</span></a></li>
+<li class="cpp11"><a href="../_forward_list/index.html"><span>forward_list::~forward_list</span></a></li>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="cpp11"><a href="../assign/index.html"><span>forward_list::assign</span></a></li>
+<li class="cpp11"><a href="../before_begin/index.html"><span> forward_list::before_begin</span></a></li>
+<li class="cpp11"><a href="../begin/index.html"><span>forward_list::begin</span></a></li>
+<li class="cpp11"><a href="../cbefore_begin/index.html"><span>forward_list::cbefore_begin</span></a></li>
+<li class="cpp11"><a href="../cbegin/index.html"><span>forward_list::cbegin</span></a></li>
+<li class="cpp11"><a href="../cend/index.html"><span>forward_list::cend</span></a></li>
+<li class="cpp11"><a href="../clear/index.html"><span>forward_list::clear</span></a></li>
+<li class="cpp11"><a href="../emplace_after/index.html"><span>forward_list::emplace_after</span></a></li>
+<li class="cpp11"><a href="../emplace_front/index.html"><span>forward_list::emplace_front</span></a></li>
+<li class="cpp11"><a href="../empty/index.html"><span>forward_list::empty</span></a></li>
+<li class="cpp11"><a href="../end/index.html"><span>forward_list::end</span></a></li>
+<li class="cpp11"><a href="../erase_after/index.html"><span>forward_list::erase_after</span></a></li>
+<li class="cpp11"><a href="../front/index.html"><span>forward_list::front</span></a></li>
+<li class="cpp11"><a href="../get_allocator/index.html"><span>forward_list::get_allocator</span></a></li>
+<li class="cpp11"><a href="../insert_after/index.html"><span>forward_list::insert_after</span></a></li>
+<li class="cpp11"><a href="../max_size/index.html"><span>forward_list::max_size</span></a></li>
+<li class="cpp11"><a href="../merge/index.html"><span>forward_list::merge</span></a></li>
+<li class="cpp11"><a href="../operator%3d/index.html"><span>forward_list::operator=</span></a></li>
+<li class="cpp11"><a href="../pop_front/index.html"><span>forward_list::pop_front</span></a></li>
+<li class="cpp11"><a href="../push_front/index.html"><span>forward_list::push_front</span></a></li>
+<li class="cpp11"><a href="../remove/index.html"><span>forward_list::remove</span></a></li>
+<li class="cpp11"><a href="../remove_if/index.html"><span>forward_list::remove_if</span></a></li>
+<li class="cpp11"><a href="../resize/index.html"><span>forward_list::resize</span></a></li>
+<li class="cpp11"><a href="../reverse/index.html"><span>forward_list::reverse</span></a></li>
+<li class="cpp11"><a href="../sort/index.html"><span>forward_list::sort</span></a></li>
+<li class="cpp11"><a href="../splice_after/index.html"><span>forward_list::splice_after</span></a></li>
+<li class="cpp11"><a href="../swap/index.html"><span>forward_list::swap</span></a></li>
+<li class="cpp11"><a href="../unique/index.html"><span>forward_list::unique</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>global functions:</h4><ul>
+<li class="cpp11"><a href="../operators/index.html"><span>operators (forward_list)</span></a></li>
+<li class="cpp11"><a href="../swap(global)/index.html"><span>swap (forward_list)</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstl%2Fforward_list%2Fforward_list%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit6e55.html?a=stl+forward_list+forward_list'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete6e55.html?a=stl+forward_list+forward_list'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/stl/forward_list/forward_list/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:20:54 GMT -->
+</html>

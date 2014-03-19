@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/iostream/ofstream/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:30:45 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ofstream - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../v311/main.css">
+<script src="../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../index.html">Reference</a></li>
+<li><a href="../index.html">IOstream Library</a></li>
+<li class="here">ofstream</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">class</div>
+<h1><span class="namespace" title="namespace std">std::</span>ofstream</h1>
+<div id="I_file" title="header &lt;fstream&gt;">&lt;fstream&gt;</div>
+<div id="I_description">Output file stream</div>
+<table class="hierarchy">
+<tr>
+<td><div><b><a href="http://www.cplusplus.com/ios_base">ios_base</a></b></div></td><td><img src="../../../img/arrow.gif" alt=""></td>
+<td><div><b><a href="http://www.cplusplus.com/ios">ios</a></b></div></td><td><img src="../../../img/arrow.gif" alt=""></td>
+<td><div><b><a href="http://www.cplusplus.com/ostream">ostream</a></b></div></td><td><img src="../../../img/arrow.gif" alt=""></td>
+<td><div><b>ofstream</b></div></td>
+</tr>
+</table>
+<br>
+<tt>ofstream</tt> provides an interface to write data to files as output streams.<br>
+<br>
+The objects of this class maintain internally a pointer to a <a href="http://www.cplusplus.com/filebuf">filebuf</a> object that can be obtained by calling member <a href="http://www.cplusplus.com/ofstream::rdbuf">rdbuf</a>.<br>
+<br>
+The file to be associated with the stream can be specified either as a parameter in the <a href="http://www.cplusplus.com/ofstream::ofstream">constructor</a> or by calling member <a href="http://www.cplusplus.com/ofstream::open">open</a>.<br>
+<br>
+After all necessary operations on a file have been performed, it can be closed (or disassociated) by calling member <a href="http://www.cplusplus.com/ofstream::close">close</a>. Once closed, the same file stream object may be used to open another file.<br>
+<br>
+The member function <a href="http://www.cplusplus.com/ofstream::is_open">is_open</a> can be used to determine whether the stream object is currently associated with a file.<br>
+<br>
+<h3>Public members</h3>
+<dl class="links"><dt><a href= "ofstream/index.html"><b>(constructor)</b></a></dt><dd>Construct object and optionally open file <span class="typ">(constructor member)</span></dd></dl><dl class="links"><dt><a href= "rdbuf/index.html"><b>rdbuf</b></a></dt><dd>Get the associated filebuf object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "is_open/index.html"><b>is_open</b></a></dt><dd>Check if a file is open <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "open/index.html"><b>open</b></a></dt><dd>Open file <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "close/index.html"><b>close</b></a></dt><dd>Close file <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h3>Members inherited from <a href="http://www.cplusplus.com/ostream">ostream</a></h3>
+<br>
+<dl class="links"><dt><a href= "../ostream/operator__/index.html"><b>operator<<</b></a></dt><dd>Insert data with format <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ostream/put/index.html"><b>put</b></a></dt><dd>Put character <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ostream/write/index.html"><b>write</b></a></dt><dd>Write block of data <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ostream/tellp/index.html"><b>tellp</b></a></dt><dd>Get position of put pointer <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ostream/seekp/index.html"><b>seekp</b></a></dt><dd>Set position of put pointer <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ostream/flush/index.html"><b>flush</b></a></dt><dd>Flush output stream buffer <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ostream/sentry/index.html"><b>sentry</b></a></dt><dd>Perform exception safe prefix/suffix operations <span class="typ">(public member classes)</span></dd></dl>
+<br>
+<h3>Member functions inherited from <a href="http://www.cplusplus.com/ios">ios</a></h3>
+<dl class="links"><dt><a href= "../ios/good/index.html"><b>good</b></a></dt><dd>Check if the state of the stream is good for i/o operations. <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/eof/index.html"><b>eof</b></a></dt><dd>Check if eofbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/fail/index.html"><b>fail</b></a></dt><dd>Check if either failbit or badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/bad/index.html"><b>bad</b></a></dt><dd>Check if badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/operatornot/index.html"><b>operator!</b></a></dt><dd>Evaluate stream object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/operator_voidpt/index.html"><b>operator void*</b></a></dt><dd>Convert to pointer <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/rdstate/index.html"><b>rdstate</b></a></dt><dd>Get error state flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/setstate/index.html"><b>setstate</b></a></dt><dd>Set error state flag <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/clear/index.html"><b>clear</b></a></dt><dd>Set error state flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/copyfmt/index.html"><b>copyfmt</b></a></dt><dd>Copy formatting information <span class="typ">(public member functions)</span></dd></dl><dl class="links"><dt><a href= "../ios/fill/index.html"><b>fill</b></a></dt><dd>Get/set the fill character <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/exceptions/index.html"><b>exceptions</b></a></dt><dd>Get/set exception mask <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/imbue/index.html"><b>imbue</b></a></dt><dd>Imbue locale <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/tie/index.html"><b>tie</b></a></dt><dd>Get/set the tied stream <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/narrow/index.html"><b>narrow</b></a></dt><dd>Narrow character <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios/widen/index.html"><b>widen</b></a></dt><dd>Widen character <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h3>Member functions inherited from <a href="http://www.cplusplus.com/ios_base">ios_base</a></h3>
+<dl class="links"><dt><a href= "../ios_base/flags/index.html"><b>flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/setf/index.html"><b>setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/unsetf/index.html"><b>unsetf</b></a></dt><dd>Clear specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/precision/index.html"><b>precision</b></a></dt><dd>Get/Set floating-point decimal precision <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/width/index.html"><b>width</b></a></dt><dd>Get/set field width <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/imbue/index.html"><b>imbue</b></a></dt><dd>Imbue locale <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/getloc/index.html"><b>getloc</b></a></dt><dd>Get current locale <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/xalloc/index.html"><b>xalloc</b></a></dt><dd>Return a new index for the internal extensible array [static] <span class="typ">(public static member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/iword/index.html"><b>iword</b></a></dt><dd>Get reference to integer element of the internal extensible array <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/pword/index.html"><b>pword</b></a></dt><dd>Get reference to pointer of the internal extensible array <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/register_callback/index.html"><b>register_callback</b></a></dt><dd>Register event callback function <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../ios_base/sync_with_stdio/index.html"><b>sync_with_stdio</b></a></dt><dd>Activate/deactivate synchronization of iostream and cstdio streams [static] <span class="typ">(public static member function)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">IOstream Library</a></b></h3>
+<ul>
+<li class="arm cpp98 cpp11 folder"><a href="../manipulators/index.html"><span>manipulators</span></a></li>
+<li class="C_Collapsable"><h4>classes:</h4><ul>
+<li class="arm cpp98 cpp11 folder"><a href="../filebuf/index.html"><span>filebuf</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../fstream/index.html"><span>fstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../ifstream/index.html"><span>ifstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../ios/index.html"><span>ios</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../iostream/index.html"><span>iostream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../ios_base/index.html"><span>ios_base</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../istream/index.html"><span>istream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../istringstream/index.html"><span>istringstream</span></a></li>
+<li class="arm cpp98 cpp11 selected folder"><a href="index.html"><span>ofstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../ostream/index.html"><span>ostream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../ostringstream/index.html"><span>ostringstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../streambuf/index.html"><span>streambuf</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../stringbuf/index.html"><span>stringbuf</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../stringstream/index.html"><span>stringstream</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>objects:</h4><ul>
+<li class="arm cpp98 cpp11"><a href="../cerr/index.html"><span>cerr</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../cin/index.html"><span>cin</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../clog/index.html"><span>clog</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../cout/index.html"><span>cout</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>types:</h4><ul>
+<li class="arm cpp98 cpp11"><a href="../fpos/index.html"><span>fpos</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../streamoff/index.html"><span>streamoff</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../streampos/index.html"><span>streampos</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../streamsize/index.html"><span>streamsize</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect arm cpp98 cpp11">
+<h3><b><a href="index.html">ofstream</a></b></h3>
+<ul>
+<li class="arm cpp98 cpp11"><a href="ofstream/index.html"><span>ofstream::ofstream</span></a></li>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="arm cpp98 cpp11"><a href="close/index.html"><span>ofstream::close</span></a></li>
+<li class="arm cpp98 cpp11"><a href="is_open/index.html"><span>ofstream::is_open</span></a></li>
+<li class="arm cpp98 cpp11"><a href="open/index.html"><span>ofstream::open</span></a></li>
+<li class="arm cpp98 cpp11"><a href="rdbuf/index.html"><span>ofstream::rdbuf</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fiostream%2Fofstream%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			el.appendChild(btn('New Page','New Page','new','../../new09bf.html?a=iostream+ofstream'));
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../edit09bf.html?a=iostream+ofstream'));
+			
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../delete09bf.html?a=iostream+ofstream'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/iostream/ofstream/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:30:49 GMT -->
+</html>

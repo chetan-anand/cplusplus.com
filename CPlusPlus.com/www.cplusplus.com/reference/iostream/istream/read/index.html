@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/iostream/istream/read/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:00:39 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>istream::read - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../../v311/main.css">
+<script src="../../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../../index.html">Reference</a></li>
+<li><a href="../../index.html">IOstream Library</a></li>
+<li><a href="../index.html">istream</a></li>
+<li class="here">read</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">public member function</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="../index.html">istream</a>::read</h1>
+<div id="I_file" title="header &lt;istream&gt;">&lt;istream&gt;</div>
+<div class="C_prototype"><pre>istream&amp; read ( char* s, streamsize n );</pre></div><div id="I_description">Read block of data</div>
+Reads a block of data of <i>n</i> characters and stores it in the array pointed by <i>s</i>.<br>
+<br>
+If the End-of-File is reached before <i>n</i> characters have been read, the array will contain all the elements read until it, and the <i>failbit</i> and <i>eofbit</i> will be set (which can be checked with members <a href="http://www.cplusplus.com/ios::fail">fail</a> and <a href="http://www.cplusplus.com/ios::eof">eof</a> respectively).<br>
+<br>
+Notice that this is an unformatted input function and what is extracted is not stored as a c-string format, therefore no ending null-character is appended at the end of the character sequence.<br>
+<br>
+Calling member <a href="http://www.cplusplus.com/istream::gcount">gcount</a> after this function the total number of characters read can be obtained.<br>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>s</dt>
+<dd>Pointer to an allocated block of memory where the content read will be stored.</dd>
+<dt>n</dt>
+<dd>Integer value of type <a href="http://www.cplusplus.com/streamsize">streamsize</a> representing the size in characters of the block of data to be read.</dd>
+</dl>
+<br>
+<h3>Return Value</h3>
+The functions return <tt>*this</tt>.<br>
+<br>
+Errors are signaled by modifying the internal state flags:<br>
+<br>
+<table class="boxed">
+<tr><th>flag</th><th>error</th></tr>
+<tr><td><tt>eofbit</tt></td><td>The end of the source of characters is reached before <i>n</i> characters have been read. This also sets <tt>failbit</tt>.</td></tr>
+<tr><td><tt>failbit</tt></td><td>The end of the source of characters is reached before <i>n</i> characters have been read. This also sets <tt>eofbit</tt>.</td></tr>
+<tr><td><tt>badbit</tt></td><td>An error other than the above happened.</td></tr>
+</table>
+<br>
+Additionally, in any of these cases, if the appropriate flag has been set with member function <a href="http://www.cplusplus.com/ios::exceptions">ios::exceptions</a>, an exception of type <a href="http://www.cplusplus.com/ios_base::failure">ios_base::failure</a> is thrown.<br>
+<br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br></code></pre></td>
+<td class="source"><pre><code><cite>// read a file into memory</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;fstream&gt;</dfn>
+<var>using</var> <var>namespace</var> std;
+
+<var>int</var> main () {
+  <var>int</var> length;
+  <var>char</var> * buffer;
+
+  ifstream is;
+  is.open (<kbd>"test.txt"</kbd>, ios::binary );
+
+  <cite>// get length of file:</cite>
+  is.seekg (0, ios::end);
+  length = is.tellg();
+  is.seekg (0, ios::beg);
+
+  <cite>// allocate memory:</cite>
+  buffer = <var>new</var> <var>char</var> [length];
+
+  <cite>// read data as a block:</cite>
+  is.read (buffer,length);
+  is.close();
+
+  cout.write (buffer,length);
+
+  <var>delete</var>[] buffer;
+  <var>return</var> 0;
+}</code></pre></td></tr></table></div>
+<br>
+<br>
+<h3>Basic template member declaration</h3>
+( basic_istream&lt;charT,traits&gt; )<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br></code></pre></td>
+<td class="source"><pre><code><var>typedef</var> charT char_type;
+basic_istream&amp; read ( char_type* s, streamsize n );</code></pre></td></tr></table></div>
+<br>
+<br>
+<h3>See also</h3>
+<dl class="links"><dt><a href= "../get/index.html"><b>istream::get</b></a></dt><dd>Get unformatted data from stream <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../readsome/index.html"><b>istream::readsome</b></a></dt><dd>Read block of data available in the buffer <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "../operator__/index.html"><b>istream::operator>></b></a></dt><dd>Extract formatted data <span class="typ">(public member function)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../../index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../../std/index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../../index.html">IOstream Library</a></b></h3>
+<ul>
+<li class="arm cpp98 cpp11 folder"><a href="../../manipulators/index.html"><span>manipulators</span></a></li>
+<li class="C_Collapsable"><h4>classes:</h4><ul>
+<li class="arm cpp98 cpp11 folder"><a href="../../filebuf/index.html"><span>filebuf</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../fstream/index.html"><span>fstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../ifstream/index.html"><span>ifstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../ios/index.html"><span>ios</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../iostream/index.html"><span>iostream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../ios_base/index.html"><span>ios_base</span></a></li>
+<li class="arm cpp98 cpp11 selected folder"><a href="../index.html"><span>istream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../istringstream/index.html"><span>istringstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../ofstream/index.html"><span>ofstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../ostream/index.html"><span>ostream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../ostringstream/index.html"><span>ostringstream</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../streambuf/index.html"><span>streambuf</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../stringbuf/index.html"><span>stringbuf</span></a></li>
+<li class="arm cpp98 cpp11 folder"><a href="../../stringstream/index.html"><span>stringstream</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>objects:</h4><ul>
+<li class="arm cpp98 cpp11"><a href="../../cerr/index.html"><span>cerr</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../../cin/index.html"><span>cin</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../../clog/index.html"><span>clog</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../../cout/index.html"><span>cout</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>types:</h4><ul>
+<li class="arm cpp98 cpp11"><a href="../../fpos/index.html"><span>fpos</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../../streamoff/index.html"><span>streamoff</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../../streampos/index.html"><span>streampos</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../../streamsize/index.html"><span>streamsize</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect arm cpp98 cpp11">
+<h3><b><a href="../index.html">istream</a></b></h3>
+<ul>
+<li class="arm cpp98 cpp11"><a href="../istream/index.html"><span>istream::istream</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../_istream/index.html"><span>istream::~istream</span></a></li>
+<li class="C_Collapsable"><h4>member classes:</h4><ul>
+<li class="arm cpp98 cpp11"><a href="../sentry/index.html"><span>istream::sentry</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>member functions:</h4><ul>
+<li class="arm cpp98 cpp11"><a href="../gcount/index.html"><span>istream::gcount</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../get/index.html"><span>istream::get</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../getline/index.html"><span>istream::getline</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../ignore/index.html"><span>istream::ignore</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../operator__/index.html"><span>istream::operator&gt;&gt;</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../peek/index.html"><span>istream::peek</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../putback/index.html"><span>istream::putback</span></a></li>
+<li class="arm cpp98 cpp11 selected"><a href="index.html"><span>istream::read</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../readsome/index.html"><span>istream::readsome</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../seekg/index.html"><span>istream::seekg</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../sync/index.html"><span>istream::sync</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../tellg/index.html"><span>istream::tellg</span></a></li>
+<li class="arm cpp98 cpp11"><a href="../unget/index.html"><span>istream::unget</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fiostream%2Fistream%2Fread%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../../edit4089.html?a=iostream+istream+read'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../../delete4089.html?a=iostream+istream+read'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/iostream/istream/read/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 07:00:40 GMT -->
+</html>

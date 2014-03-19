@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/iterator/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:29:07 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>iterator - C++ Reference</title>
+<link rel="canonical" href="index.html">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../../v311/main.css">
+<script src="../../../v311/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="../../index.html">Reference</a></li>
+<li><a href="../index.html">Miscellaneous</a></li>
+<li class="here">iterator</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span></div></div></div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight"></div>
+<div id="I_main">
+<div class="C_ad728">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="I_content"><div class="C_doc">
+<div id="I_type">header</div>
+<h1>iterator</h1>
+<div id="I_description">Iterator definitions</div>
+In C++, an iterator is any object that, pointing to some element in a range of elements (such as an array or a <a href="http://www.cplusplus.com/stl">container</a>), has the ability to iterate through the elements of that range using a set of operators (at least, the increment (<tt>++</tt>) and dereference (<tt>*</tt>) operators).<br>
+<br>
+The most obvious form of iterator is a <i>pointer</i>: A pointer can point to elements in an array, and can iterate through them using the increment operator (<tt>++</tt>). But other forms of iterators exist. For example, each <a href="http://www.cplusplus.com/stl">container</a> type (such as a <a href="http://www.cplusplus.com/vector">vector</a>) has a specific <i>iterator</i> type designed to iterate through its elements in an efficient way.<br>
+<br>
+Notice that while a pointer is a form of iterator, not all iterators have the same functionality a pointer has; To distinguish between the requirements an iterator shall have for a specific algorithm, five different <i>iterator categories</i> exist:<br>
+<br>
+<h3>Iterator categories</h3>
+Iterators are classified in five categories depending on the functionality they implement:<br>
+<br>
+<table class="hierarchy">
+<tr>
+<td><div><b><a href="http://www.cplusplus.com/RandomAccessIterator">RandomAccess</a></b></div></td><td><img src="../../../img/arrow.gif" alt=""></td>
+<td><div><b><a href="http://www.cplusplus.com/BidirectionalIterator">Bidirectional</a></b></div></td><td><img src="../../../img/arrow.gif" alt=""></td>
+<td><div><b><a href="http://www.cplusplus.com/ForwardIterator">Forward</a></b></div></td><td><img src="../../../img/arrow.gif" alt=""></td>
+<td><div><b><a href="http://www.cplusplus.com/InputIterator">Input</a></b></div></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td>
+<td></td><td><img src="../../../img/arrow.gif" alt=""></td>
+<td><div><b><a href="http://www.cplusplus.com/OutputIterator">Output</a></b></div></td>
+</tr>
+</table>
+<br>
+In this graph, each iterator category implements the functionalities of all categories to its right:<br>
+<br>
+<a href="http://www.cplusplus.com/InputIterator">Input</a> and <a href="http://www.cplusplus.com/OutputIterator">output</a> iterators are the most limited types of iterators, specialized in performing only sequential input or output operations.<br>
+<br>
+<a href="http://www.cplusplus.com/ForwardIterator">Forward iterators</a> have all the functionality of <a href="http://www.cplusplus.com/InputIterator">input</a> and <a href="http://www.cplusplus.com/OutputIterator">output</a> iterators, although they are limited to one direction in which to iterate through a range. <br>
+<br>
+<a href="http://www.cplusplus.com/BidirectionalIterator">Bidirectional iterators</a> can be iterated through in both directions. All <a href="http://www.cplusplus.com/stl">standard containers</a> support at least bidirectional iterators types.<br>
+<br>
+<a href="http://www.cplusplus.com/RandomAccessIterator">Random access iterators</a> implement all the functionalities of <a href="http://www.cplusplus.com/BidirectionalIterator">bidirectional iterators</a>, plus, they have the ability to access ranges non-sequentially: offsets can be directly applied to these iterators without iterating through all the elements in between. This provides these iterators with the same functionality as standard pointers (pointers are iterators of this category).<br>
+<br>
+The characteristics of each category of iterators are:<br>
+<br>
+<table class="boxed">
+<tr><th colspan="4">category</th><th>characteristic</th><th>valid expressions</th></tr>
+<tr><td colspan="4" rowspan="2">all categories</td><td>Can be copied and copy-constructed</td><td><tt>X b(a);<br>
+b = a;</tt></td></tr>
+<tr><td>Can be incremented</td><td><tt>++a<br>
+a++<br>
+*a++</tt></td></tr>
+<tr><td rowspan="9"><a href="http://www.cplusplus.com/RandomAccessIterator">Random Access</a></td><td rowspan="5"><a href="http://www.cplusplus.com/BidirectionalIterator">Bidirectional</a></td><td rowspan="4"><a href="http://www.cplusplus.com/ForwardIterator">Forward</a></td><td rowspan="2"><a href="http://www.cplusplus.com/InputIterator">Input</a></td><td>Accepts equality/inequality comparisons</td><td><tt>a == b<br>
+a != b</tt></td></tr>
+<tr><td>Can be dereferenced as an <i>rvalue</i></td><td><tt>*a<br>
+a-&gt;m</tt></td></tr>
+<tr><td><a href="http://www.cplusplus.com/OutputIterator">Output</a></td><td>Can be dereferenced to be the left side of an assignment operation</td><td><tt>*a = t<br>
+*a++ = t</tt></td></tr>
+<tr><td></td><td>Can be default-constructed</td><td><tt>X a;<br>
+X()</tt></td></tr>
+<tr><td colspan="2"></td><td>Can be decremented</td><td><tt>--a<br>
+a--<br>
+*a--</tt></td></tr>
+<tr><td colspan="3" rowspan="4"></td><td>Supports arithmetic operators <tt>+</tt> and <tt>-</tt></td><td><tt>a + n<br>
+n + a<br>
+a - n<br>
+a - b</tt></td></tr>
+<tr><td>Supports inequality comparisons (<tt>&lt;</tt>, <tt>&gt;</tt>, <tt>&lt;=</tt> and <tt>&gt;=</tt>) between iterators</td><td><tt>a &lt; b<br>
+a &gt; b<br>
+a &lt;= b<br>
+a &gt;= b</tt></td></tr>
+<tr><td>Supports compound assignment operations <tt>+=</tt> and <tt>-=</tt></td><td><tt>a += n<br>
+a -= n</tt></td></tr>
+<tr><td>Supports offset dereference operator (<tt>[]</tt>)</td><td><tt>a[n]</tt></td></tr>
+</table>
+<br>
+Where <tt>X</tt> is an iterator type, <tt>a</tt> and <tt>b</tt> are objects of this iterator type, <tt>t</tt> is an object of the type pointed by the iterator type, and <tt>n</tt> is an integer value.<br>
+<br>
+<a href="http://www.cplusplus.com/RandomAccessIterator">Random access iterators</a> have all characteristics. <a href="http://www.cplusplus.com/BidirectionalIterator">Bidirectional iterators</a> have a subset of <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterators</a>'s. <a href="http://www.cplusplus.com/ForwardIterator">Forward iterators</a> have a subset of <a href="http://www.cplusplus.com/BidirectionalIterator">bidirectional iterators</a>'s. And <a href="http://www.cplusplus.com/InputIterator">input</a> and <a href="http://www.cplusplus.com/OutputIterator">output</a> have each their own subset of <a href="http://www.cplusplus.com/ForwardIterator">forward iterator</a>'s.<br>
+<br>
+<h3>Base</h3>
+<dl class="links"><dt><a href= "iterator/index.html"><b>iterator</b></a></dt><dd>Iterator base class <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "iterator_traits/index.html"><b>iterator_traits</b></a></dt><dd>Iterator traits <span class="typ">(class template)</span></dd></dl>
+<br>
+<h3>Functions</h3>
+<b>Iterator operations</b>:<br>
+<dl class="links"><dt><a href= "advance/index.html"><b>advance</b></a></dt><dd>Advance iterator <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "distance/index.html"><b>distance</b></a></dt><dd>Return distance between iterators <span class="typ">(function template)</span></dd></dl>
+<br>
+<b>Inserters</b>:<br>
+<dl class="links"><dt><a href= "back_inserter/index.html"><b>back_inserter</b></a></dt><dd>Construct a back insert iterator <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "front_inserter/index.html"><b>front_inserter</b></a></dt><dd>Constructs a front insert iterator <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "inserter/index.html"><b>inserter</b></a></dt><dd>Construct an insert iterator <span class="typ">(function template)</span></dd></dl>
+<br>
+<h3>Predefined iterators</h3>
+<dl class="links"><dt><a href= "reverse_iterator/index.html"><b>reverse_iterator</b></a></dt><dd>Reverse iterator <span class="typ">(class template)</span></dd></dl>
+<br>
+<b>Inserter iterators</b>
+<dl class="links"><dt><a href= "back_insert_iterator/index.html"><b>back_insert_iterator</b></a></dt><dd>Back insert iterator <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "front_insert_iterator/index.html"><b>front_insert_iterator</b></a></dt><dd>Front insert iterator <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "insert_iterator/index.html"><b>insert_iterator</b></a></dt><dd>Insert iterator <span class="typ">(class template)</span></dd></dl>
+<br>
+<b>Input/Output iterators</b>
+<dl class="links"><dt><a href= "istream_iterator/index.html"><b>istream_iterator</b></a></dt><dd>Istream iterator <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "ostream_iterator/index.html"><b>ostream_iterator</b></a></dt><dd>Ostream iterator <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "istreambuf_iterator/index.html"><b>istreambuf_iterator</b></a></dt><dd>Input stream buffer iterator <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "ostreambuf_iterator/index.html"><b>ostreambuf_iterator</b></a></dt><dd>Output stream buffer iterator <span class="typ">(class template)</span></dd></dl>
+</div><div id="CH_bb"></div></div></div><div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Documentation</a></li>
+<li class="folder selected reference"><a href="../../index.html">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect">
+<h3><b><a href="../../index.html">Reference</a></b></h3>
+<ul>
+<li class="cpp98 cpp11 folder"><a href="../../clibrary/index.html"><span>C Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../iostream/index.html"><span>IOstream Library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../string/index.html"><span>Strings library</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../stl/index.html"><span>STL Containers</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../../algorithm/index.html"><span>STL Algorithms</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="../index.html"><span>Miscellaneous</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="../index.html">Miscellaneous</a></b></h3>
+<ul>
+<li class="cpp11 folder"><a href="../chrono/index.html"><span>chrono</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../complex/index.html"><span>complex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../exception/index.html"><span>exception</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../functional/index.html"><span>functional</span></a></li>
+<li class="cpp11 folder"><a href="../initializer_list/index.html"><span>initializer_list</span></a></li>
+<li class="cpp98 cpp11 selected folder"><a href="index.html"><span>iterator</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../limits/index.html"><span>limits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../locale/index.html"><span>locale</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../memory/index.html"><span>memory</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../new/index.html"><span>new</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../numeric/index.html"><span>numeric</span></a></li>
+<li class="cpp11 folder"><a href="../random/index.html"><span>random</span></a></li>
+<li class="cpp11 folder"><a href="../ratio/index.html"><span>ratio</span></a></li>
+<li class="cpp11 folder"><a href="../regex/index.html"><span>regex</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../stdexcept/index.html"><span>stdexcept</span></a></li>
+<li class="cpp11 folder"><a href="../system_error/index.html"><span>system_error</span></a></li>
+<li class="cpp11 folder"><a href="../tuple/index.html"><span>tuple</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../typeinfo/index.html"><span>typeinfo</span></a></li>
+<li class="cpp11 folder"><a href="../type_traits/index.html"><span>type_traits</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../utility/index.html"><span>utility</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="../valarray/index.html"><span>valarray</span></a></li>
+</ul>
+</div>
+<div class="C_BoxLabels sect cpp98 cpp11">
+<h3><b><a href="index.html">iterator</a></b></h3>
+<ul>
+<li class="cpp98 cpp11"><a href="advance/index.html"><span>advance</span></a></li>
+<li class="cpp98 cpp11"><a href="back_inserter/index.html"><span>back_inserter</span></a></li>
+<li class="cpp98 cpp11"><a href="distance/index.html"><span>distance</span></a></li>
+<li class="cpp98 cpp11"><a href="front_inserter/index.html"><span>front_inserter</span></a></li>
+<li class="cpp98 cpp11"><a href="inserter/index.html"><span>inserter</span></a></li>
+<li class="cpp98 cpp11"><a href="iterator/index.html"><span>iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="iterator_traits/index.html"><span>iterator_traits</span></a></li>
+<li class="C_Collapsable"><h4>iterator categories:</h4><ul>
+<li class="cpp98 cpp11"><a href="BidirectionalIterator/index.html"><span>Bidirectional Iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="ForwardIterator/index.html"><span>Forward Iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="InputIterator/index.html"><span>Input Iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="OutputIterator/index.html"><span>Output Iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="RandomAccessIterator/index.html"><span>Random Access Iterator</span></a></li>
+</ul></li>
+<li class="C_Collapsable"><h4>predefined iterators:</h4><ul>
+<li class="cpp98 cpp11"><a href="back_insert_iterator/index.html"><span>back_insert_iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="front_insert_iterator/index.html"><span>front_insert_iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="insert_iterator/index.html"><span>insert_iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="istreambuf_iterator/index.html"><span>istreambuf_iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="istream_iterator/index.html"><span>istream_iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="ostreambuf_iterator/index.html"><span>ostreambuf_iterator</span></a></li>
+<li class="cpp98 cpp11"><a href="ostream_iterator/index.html"><span>ostream_iterator</span></a></li>
+<li class="cpp98 cpp11 folder"><a href="reverse_iterator/index.html"><span>reverse_iterator</span></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="../../../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+<div id="I_midclear"></div>
+</div></div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>&copy; cplusplus.com, 2000-2012 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=http%3A%2F%2Fwww.cplusplus.com%2Freference%2Fstd%2Fiterator%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+
+<script type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			el.appendChild(btn('New Page','New Page','new','../../newa23d.html?a=std+iterator'));
+			el.appendChild(btn('Edit Page','Edit Page','edit','../../edita23d.html?a=std+iterator'));
+			
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='../../deletea23d.html?a=std+iterator'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+</body>
+
+<!-- Mirrored from www.cplusplus.com/reference/std/iterator/ by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Nov 2012 06:29:12 GMT -->
+</html>
